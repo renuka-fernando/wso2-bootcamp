@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "e68a1005-09a1-435a-9a3a-7be2cc638c30",
+		"name": "WSO2_ESB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Case-Study-1",
+			"item": [
+				{
+					"name": "Country",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{origin}}/countrycode/uk",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"countrycode",
+								"uk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Currancy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{origin}}/country/United_Kingdom",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"country",
+								"United_Kingdom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Time",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{origin}}/time/United Kingdom",
+							"host": [
+								"{{origin}}"
+							],
+							"path": [
+								"time",
+								"United Kingdom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Request to ESB",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "Sapplication/xml",
+								"type": "text"
+							},
+							{
+								"key": "CountryCode",
+								"value": "UK",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<customers>\r\n   <customer>\r\n      <customer-id>1</customer-id>\r\n      <customer-first-name>John</customer-first-name>\r\n      <customer-last-name>Smith</customer-last-name>\r\n      <address>\r\n         <address-line1>Lodge Way House</address-line1>\r\n         <address-line2>Lodge Way</address-line2>\r\n         <street>Harlestone Road</street>\r\n         <city>Northampton</city>\r\n         <zip-code>NN5 7UG</zip-code>\t\r\n      </address>\r\n   </customer>\r\n</customers>\r\n"
+						},
+						"url": {
+							"raw": "http://192.168.200.97:8280/customers/1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"200",
+								"97"
+							],
+							"port": "8280",
+							"path": [
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Case-Study-2",
+			"item": [
+				{
+					"name": "Call Throuth APIM",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 7ab9fbf0-e6a4-3f97-894b-8f0b0aa53e2e"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehicleNumber\": \"xxx-xxx\",\r\n  \"cardNo\": \"xxx-xxx-xxx-xxx\",\r\n  \"numberOfMonths\": 3\r\n}"
+						},
+						"url": {
+							"raw": "https://192.168.200.97:8246/license/v1.0.0/mediate",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"200",
+								"97"
+							],
+							"port": "8246",
+							"path": [
+								"license",
+								"v1.0.0",
+								"mediate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Case-Study-3",
+			"item": [
+				{
+					"name": "DSS",
+					"item": [
+						{
+							"name": "Add User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<customers>\r\n\t<user>\r\n\t  <TP_FULL_NAME>Renuka Fernando</TP_FULL_NAME>\r\n\t  <TP_USER_NAME>refernando</TP_USER_NAME>\r\n\t  <TP_USER_PASSWORD>1234</TP_USER_PASSWORD>\r\n\t  <TP_ACTIVE>1</TP_ACTIVE>\r\n\t  <TP_CHANGED_TIME>2019-02-11 10:00:01</TP_CHANGED_TIME>\r\n\t  <TP_TENANT_ID>887888</TP_TENANT_ID>\r\n\t</user>\r\n\t<user>\r\n\t  <TP_FULL_NAME>Renuka Fernando</TP_FULL_NAME>\r\n\t  <TP_USER_NAME>refernando</TP_USER_NAME>\r\n\t  <TP_USER_PASSWORD>1234</TP_USER_PASSWORD>\r\n\t  <TP_ACTIVE>1</TP_ACTIVE>\r\n\t  <TP_CHANGED_TIME>2019-02-11 10:00:01</TP_CHANGED_TIME>\r\n\t  <TP_TENANT_ID>83388348</TP_TENANT_ID>\r\n\t</user>\r\n</customers>"
+								},
+								"url": {
+									"raw": "{{dss-origin}}/services/TP_UserService/users",
+									"host": [
+										"{{dss-origin}}"
+									],
+									"path": [
+										"services",
+										"TP_UserService",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{dss-origin}}/services/TP_UserService/users/1",
+									"host": [
+										"{{dss-origin}}"
+									],
+									"path": [
+										"services",
+										"TP_UserService",
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User search by Name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{dss-origin}}/services/TP_UserService/users/name/fernando",
+									"host": [
+										"{{dss-origin}}"
+									],
+									"path": [
+										"services",
+										"TP_UserService",
+										"users",
+										"name",
+										"fernando"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<user>\r\n  <TP_ID>3</TP_ID>\r\n  <TP_FULL_NAME>Nisal Fernando</TP_FULL_NAME>\r\n  <TP_USER_NAME>refernando</TP_USER_NAME>\r\n  <TP_USER_PASSWORD>1234</TP_USER_PASSWORD>\r\n  <TP_ACTIVE>1</TP_ACTIVE>\r\n  <TP_CHANGED_TIME>2019-02-11 10:00:01</TP_CHANGED_TIME>\r\n  <TP_TENANT_ID>887888</TP_TENANT_ID>\r\n</user>"
+								},
+								"url": {
+									"raw": "{{dss-origin}}/services/TP_UserService/users",
+									"host": [
+										"{{dss-origin}}"
+									],
+									"path": [
+										"services",
+										"TP_UserService",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{dss-origin}}/services/TP_UserService/users/3",
+									"host": [
+										"{{dss-origin}}"
+									],
+									"path": [
+										"services",
+										"TP_UserService",
+										"users",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trancate Users",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{dss-origin}}/services/TP_UserService/trancate/users",
+									"host": [
+										"{{dss-origin}}"
+									],
+									"path": [
+										"services",
+										"TP_UserService",
+										"trancate",
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "ESB",
+					"item": [
+						{
+							"name": "GetUser",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{esb-origin}}/users/1",
+									"host": [
+										"{{esb-origin}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetUser search by Name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{esb-origin}}/users?name=fernando",
+									"host": [
+										"{{esb-origin}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "fernando"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteUser",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{esb-origin}}/users/3",
+									"host": [
+										"{{esb-origin}}"
+									],
+									"path": [
+										"users",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PostUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<customers>\n\t<customer>\n\t\t<customer-first-name>Renuka</customer-first-name>\n\t\t<customer-last-name>fernando</customer-last-name>\n\t\t<username>rfernando</username>\n\t\t<tenant-id>227</tenant-id>\n\t</customer>\n\t<customer>\n\t\t<customer-first-name>Menuka</customer-first-name>\n\t\t<customer-last-name>fernando</customer-last-name>\n\t\t<username>rfernando</username>\n\t\t<tenant-id>1227</tenant-id>\n\t</customer>\n</customers>"
+								},
+								"url": {
+									"raw": "{{esb-origin}}/users",
+									"host": [
+										"{{esb-origin}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PutUser",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/xml"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<customer>\n\t<customer-first-name>Renuka</customer-first-name>\n\t<customer-last-name>Fernando</customer-last-name>\n\t<username>rfernando</username>\n\t<tenant-id>442</tenant-id>\n</customer>"
+								},
+								"url": {
+									"raw": "{{esb-origin}}/users/1",
+									"host": [
+										"{{esb-origin}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "APIM",
+					"item": [
+						{
+							"name": "Add User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{apim-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<customers>\n\t<customer>\n\t\t<customer-first-name>Renuka</customer-first-name>\n\t\t<customer-last-name>Fernando</customer-last-name>\n\t\t<username>rfernando</username>\n\t\t<tenant-id>4</tenant-id>\n\t</customer>\n</customers>"
+								},
+								"url": {
+									"raw": "{{apim-origin}}/tpuser/v1.0.0/users",
+									"host": [
+										"{{apim-origin}}"
+									],
+									"path": [
+										"tpuser",
+										"v1.0.0",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Put User",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/xml"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{apim-token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<customers>\n\t<customer>\n\t\t<customer-first-name>Nisal</customer-first-name>\n\t\t<customer-last-name>Fernando</customer-last-name>\n\t\t<username>rfernando</username>\n\t\t<tenant-id>4</tenant-id>\n\t</customer>\n</customers>"
+								},
+								"url": {
+									"raw": "{{apim-origin}}/tpuser/v1.0.0/users/3",
+									"host": [
+										"{{apim-origin}}"
+									],
+									"path": [
+										"tpuser",
+										"v1.0.0",
+										"users",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{apim-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apim-origin}}/tpuser/v1.0.0/users/1",
+									"host": [
+										"{{apim-origin}}"
+									],
+									"path": [
+										"tpuser",
+										"v1.0.0",
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User search by Name",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{apim-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apim-origin}}/tpuser/v1.0.0/users?name=renuka",
+									"host": [
+										"{{apim-origin}}"
+									],
+									"path": [
+										"tpuser",
+										"v1.0.0",
+										"users"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "renuka"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{apim-token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{apim-origin}}/tpuser/v1.0.0/users/2",
+									"host": [
+										"{{apim-origin}}"
+									],
+									"path": [
+										"tpuser",
+										"v1.0.0",
+										"users",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
