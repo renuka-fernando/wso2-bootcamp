@@ -1,0 +1,67 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.apache.org/axis2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://ws.apache.org/axis2">
+   <wsdl:types/>
+   <wsdl:message name="in"/>
+   <wsdl:message name="out"/>
+   <wsdl:portType name="TestProxyPortType">
+      <wsdl:operation name="mediate">
+         <wsdl:input message="tns:in" wsaw:Action="urn:mediate"/>
+         <wsdl:output message="tns:out" wsaw:Action="urn:mediateResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="TestProxySoap11Binding" type="tns:TestProxyPortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="mediate">
+         <soap:operation soapAction="urn:mediate" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="TestProxySoap12Binding" type="tns:TestProxyPortType">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="mediate">
+         <soap12:operation soapAction="urn:mediate" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="TestProxyHttpBinding" type="tns:TestProxyPortType">
+      <http:binding verb="POST"/>
+      <wsdl:operation name="mediate">
+         <http:operation location="mediate"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="TestProxy">
+      <wsdl:port name="TestProxyHttpsSoap11Endpoint" binding="tns:TestProxySoap11Binding">
+         <soap:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsSoap11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="TestProxyHttpSoap11Endpoint" binding="tns:TestProxySoap11Binding">
+         <soap:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="TestProxyHttpSoap12Endpoint" binding="tns:TestProxySoap12Binding">
+         <soap12:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="TestProxyHttpsSoap12Endpoint" binding="tns:TestProxySoap12Binding">
+         <soap12:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsSoap12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="TestProxyHttpsEndpoint" binding="tns:TestProxyHttpBinding">
+         <http:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsEndpoint"/>
+      </wsdl:port>
+      <wsdl:port name="TestProxyHttpEndpoint" binding="tns:TestProxyHttpBinding">
+         <http:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpEndpoint"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="LicenseServiceEP" xmlns="http://ws.apache.org/ns/synapse">
+    <address format="soap12" uri="http://192.168.200.97:9763/services/LicenseService"/>
+</endpoint>

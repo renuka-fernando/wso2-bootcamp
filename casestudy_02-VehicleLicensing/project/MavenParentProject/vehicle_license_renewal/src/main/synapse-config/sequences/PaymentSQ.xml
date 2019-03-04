@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PaymentSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <payloadFactory media-type="xml">
+        <format>
+            <sam:doPayment xmlns:sam="http://sample.esb.org">
+                <sam:cardNo>$1</sam:cardNo>
+                <sam:referenceNo>$2</sam:referenceNo>
+                <sam:amount>$3</sam:amount>
+            </sam:doPayment>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:card_no"/>
+            <arg evaluator="xml" expression="$ctx:license_reference_no"/>
+            <arg evaluator="xml" expression="$ctx:final_payment"/>
+        </args>
+    </payloadFactory>
+    <property name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="true"/>
+    <filter xpath="$ctx:final_payment > 100">
+        <then>
+            <property name="payment_validity" scope="default" type="BOOLEAN" value="false"/>
+            <sequence key="InvalidPaymentSQ"/>
+        </then>
+        <else>
+            <property name="payment_validity" scope="default" type="BOOLEAN" value="true"/>
+            <store messageStore="LicensePaymentJMSMS"/>
+        </else>
+    </filter>
+</sequence>

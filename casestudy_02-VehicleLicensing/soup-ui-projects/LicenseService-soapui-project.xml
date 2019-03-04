@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="76c1a3e9-1df6-4b9f-b7e4-409ff42cd506" activeEnvironment="Default" name="LicenseService" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="42575988-5c75-4f54-bd66-e837fac0f06c" wsaVersion="NONE" name="LicenseServiceSoap12Binding" type="wsdl" bindingName="{http://sample.esb.org}LicenseServiceSoap12Binding" soapVersion="1_2" anonymous="optional" definition="file:/D:/learn/wso2%20boot%20camp/day9/Tutorial%201%20-%203/LicenseService.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/D:/learn/wso2%20boot%20camp/day9/Tutorial%201%20-%203/LicenseService.xml"><con:part><con:url>file:/D:/learn/wso2%20boot%20camp/day9/Tutorial%201%20-%203/LicenseService.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://sample.esb.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax2435="http://sample.esb.org/xsd" xmlns:ns="http://sample.esb.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>LicenseService</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.esb.org" xmlns:ax2436="http://sample.esb.org/xsd">
+      <xs:import namespace="http://sample.esb.org/xsd"/>
+      <xs:element name="LicenseServiceException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="LicenseServiceException" nillable="true" type="ns:Exception"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="renewLicense">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="insurancePolicy" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ecoCert" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="renewLicenseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax2435:LicenseServiceResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.esb.org/xsd">
+      <xs:complexType name="LicenseServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fee" type="xs:int"/>
+          <xs:element minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="timestamp" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="renewLicenseRequest">
+    <wsdl:part name="parameters" element="ns:renewLicense"/>
+  </wsdl:message>
+  <wsdl:message name="renewLicenseResponse">
+    <wsdl:part name="parameters" element="ns:renewLicenseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LicenseServiceException">
+    <wsdl:part name="parameters" element="ns:LicenseServiceException"/>
+  </wsdl:message>
+  <wsdl:portType name="LicenseServicePortType">
+    <wsdl:operation name="renewLicense">
+      <wsdl:input message="ns:renewLicenseRequest" wsaw:Action="urn:renewLicense"/>
+      <wsdl:output message="ns:renewLicenseResponse" wsaw:Action="urn:renewLicenseResponse"/>
+      <wsdl:fault message="ns:LicenseServiceException" name="LicenseServiceException" wsaw:Action="urn:renewLicenseLicenseServiceException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LicenseServiceSoap11Binding" type="ns:LicenseServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="renewLicense">
+      <soap:operation soapAction="urn:renewLicense" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LicenseServiceException">
+        <soap:fault use="literal" name="LicenseServiceException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseServiceSoap12Binding" type="ns:LicenseServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="renewLicense">
+      <soap12:operation soapAction="urn:renewLicense" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LicenseServiceException">
+        <soap12:fault use="literal" name="LicenseServiceException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseServiceHttpBinding" type="ns:LicenseServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="renewLicense">
+      <http:operation location="renewLicense"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LicenseService">
+    <wsdl:port name="LicenseServiceHttpSoap11Endpoint" binding="ns:LicenseServiceSoap11Binding">
+      <soap:address location="http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpsSoap11Endpoint" binding="ns:LicenseServiceSoap11Binding">
+      <soap:address location="https://192.168.200.97:9443/services/LicenseService.LicenseServiceHttpsSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpSoap12Endpoint" binding="ns:LicenseServiceSoap12Binding">
+      <soap12:address location="http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpsSoap12Endpoint" binding="ns:LicenseServiceSoap12Binding">
+      <soap12:address location="https://192.168.200.97:9443/services/LicenseService.LicenseServiceHttpsSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpsEndpoint" binding="ns:LicenseServiceHttpBinding">
+      <http:address location="https://192.168.200.97:9443/services/LicenseService.LicenseServiceHttpsEndpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpEndpoint" binding="ns:LicenseServiceHttpBinding">
+      <http:address location="http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpSoap12Endpoint/</con:endpoint><con:endpoint>https://192.168.200.97:9443/services/LicenseService.LicenseServiceHttpsSoap12Endpoint/</con:endpoint></con:endpoints><con:operation id="50504d98-4fb4-40bc-9ef7-3d8de1507cea" isOneWay="false" action="urn:renewLicense" name="renewLicense" bindingOperationName="renewLicense" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="192c609e-80bf-4590-8c9d-0ec123b36126" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:sam="http://sample.esb.org">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <sam:renewLicense>\r
+         <!--Optional:-->\r
+         <sam:vehicleNumber>?</sam:vehicleNumber>\r
+         <!--Optional:-->\r
+         <sam:insurancePolicy>?</sam:insurancePolicy>\r
+         <!--Optional:-->\r
+         <sam:ecoCert>?</sam:ecoCert>\r
+      </sam:renewLicense>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:renewLicense"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="bc82c3c8-88ba-4b3c-a234-fbece96b0ee1" wsaVersion="NONE" name="LicenseServiceSoap11Binding" type="wsdl" bindingName="{http://sample.esb.org}LicenseServiceSoap11Binding" soapVersion="1_1" anonymous="optional" definition="file:/D:/learn/wso2%20boot%20camp/day9/Tutorial%201%20-%203/LicenseService.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\learn\wso2%20boot%20camp\day9\Tutorial%201%20-%203\LicenseService.xml"><con:part><con:url>file:\D:\learn\wso2%20boot%20camp\day9\Tutorial%201%20-%203\LicenseService.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://sample.esb.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax2435="http://sample.esb.org/xsd" xmlns:ns="http://sample.esb.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>LicenseService</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.esb.org" xmlns:ax2436="http://sample.esb.org/xsd">
+      <xs:import namespace="http://sample.esb.org/xsd"/>
+      <xs:element name="LicenseServiceException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="LicenseServiceException" nillable="true" type="ns:Exception"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="renewLicense">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="insurancePolicy" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ecoCert" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="renewLicenseResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax2435:LicenseServiceResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.esb.org/xsd">
+      <xs:complexType name="LicenseServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fee" type="xs:int"/>
+          <xs:element minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="timestamp" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="renewLicenseRequest">
+    <wsdl:part name="parameters" element="ns:renewLicense"/>
+  </wsdl:message>
+  <wsdl:message name="renewLicenseResponse">
+    <wsdl:part name="parameters" element="ns:renewLicenseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="LicenseServiceException">
+    <wsdl:part name="parameters" element="ns:LicenseServiceException"/>
+  </wsdl:message>
+  <wsdl:portType name="LicenseServicePortType">
+    <wsdl:operation name="renewLicense">
+      <wsdl:input message="ns:renewLicenseRequest" wsaw:Action="urn:renewLicense"/>
+      <wsdl:output message="ns:renewLicenseResponse" wsaw:Action="urn:renewLicenseResponse"/>
+      <wsdl:fault message="ns:LicenseServiceException" name="LicenseServiceException" wsaw:Action="urn:renewLicenseLicenseServiceException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LicenseServiceSoap11Binding" type="ns:LicenseServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="renewLicense">
+      <soap:operation soapAction="urn:renewLicense" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LicenseServiceException">
+        <soap:fault use="literal" name="LicenseServiceException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseServiceSoap12Binding" type="ns:LicenseServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="renewLicense">
+      <soap12:operation soapAction="urn:renewLicense" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="LicenseServiceException">
+        <soap12:fault use="literal" name="LicenseServiceException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseServiceHttpBinding" type="ns:LicenseServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="renewLicense">
+      <http:operation location="renewLicense"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LicenseService">
+    <wsdl:port name="LicenseServiceHttpSoap11Endpoint" binding="ns:LicenseServiceSoap11Binding">
+      <soap:address location="http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpsSoap11Endpoint" binding="ns:LicenseServiceSoap11Binding">
+      <soap:address location="https://192.168.200.97:9443/services/LicenseService.LicenseServiceHttpsSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpSoap12Endpoint" binding="ns:LicenseServiceSoap12Binding">
+      <soap12:address location="http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpsSoap12Endpoint" binding="ns:LicenseServiceSoap12Binding">
+      <soap12:address location="https://192.168.200.97:9443/services/LicenseService.LicenseServiceHttpsSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpsEndpoint" binding="ns:LicenseServiceHttpBinding">
+      <http:address location="https://192.168.200.97:9443/services/LicenseService.LicenseServiceHttpsEndpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpEndpoint" binding="ns:LicenseServiceHttpBinding">
+      <http:address location="http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpSoap11Endpoint/</con:endpoint><con:endpoint>https://192.168.200.97:9443/services/LicenseService.LicenseServiceHttpsSoap11Endpoint/</con:endpoint></con:endpoints><con:operation id="f9510968-a2de-44d1-ac99-90828cd8d649" isOneWay="false" action="urn:renewLicense" name="renewLicense" bindingOperationName="renewLicense" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5dfa7cdc-44d4-4258-8d06-d5f42dfc0565" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.200.97:9763/services/LicenseService.LicenseServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sam="http://sample.esb.org">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <sam:renewLicense>\r
+         <!--Optional:-->\r
+         <sam:vehicleNumber>SPKP-6531</sam:vehicleNumber>\r
+         <!--Optional:-->\r
+         <sam:insurancePolicy>-869864462</sam:insurancePolicy>\r
+         <!--Optional:-->\r
+         <sam:ecoCert>-1250719063</sam:ecoCert>\r
+      </sam:renewLicense>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:renewLicense"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

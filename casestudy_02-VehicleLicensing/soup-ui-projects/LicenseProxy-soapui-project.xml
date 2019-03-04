@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7108d31e-cdcc-4bdf-8394-117430ba1b83" activeEnvironment="Default" name="LicenseProxy" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="758d5210-93ce-47cd-96df-dbf9cf0a8a44" wsaVersion="NONE" name="LicenseProxySoap11Binding" type="wsdl" bindingName="{http://ws.apache.org/axis2}LicenseProxySoap11Binding" soapVersion="1_1" anonymous="optional" definition="file:/D:/learn/wso2%20boot%20camp/day9-10/LicenseProxy.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/D:/learn/wso2%20boot%20camp/day9-10/LicenseProxy.xml"><con:part><con:url>file:/D:/learn/wso2%20boot%20camp/day9-10/LicenseProxy.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://ws.apache.org/axis2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.apache.org/axis2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types/>
+  <wsdl:message name="in"/>
+  <wsdl:message name="out"/>
+  <wsdl:portType name="LicenseProxyPortType">
+    <wsdl:operation name="mediate">
+      <wsdl:input message="tns:in" wsaw:Action="urn:mediate"/>
+      <wsdl:output message="tns:out" wsaw:Action="urn:mediateResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LicenseProxySoap11Binding" type="tns:LicenseProxyPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="mediate">
+      <soap:operation soapAction="urn:mediate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseProxySoap12Binding" type="tns:LicenseProxyPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="mediate">
+      <soap12:operation soapAction="urn:mediate" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseProxyHttpBinding" type="tns:LicenseProxyPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="mediate">
+      <http:operation location="mediate"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LicenseProxy">
+    <wsdl:port name="LicenseProxyHttpSoap11Endpoint" binding="tns:LicenseProxySoap11Binding">
+      <soap:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpsSoap11Endpoint" binding="tns:LicenseProxySoap11Binding">
+      <soap:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpSoap12Endpoint" binding="tns:LicenseProxySoap12Binding">
+      <soap12:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpsSoap12Endpoint" binding="tns:LicenseProxySoap12Binding">
+      <soap12:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpsEndpoint" binding="tns:LicenseProxyHttpBinding">
+      <http:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsEndpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpEndpoint" binding="tns:LicenseProxyHttpBinding">
+      <http:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpEndpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap11Endpoint</con:endpoint><con:endpoint>https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsSoap11Endpoint</con:endpoint></con:endpoints><con:operation id="6e2e3b09-f6b7-4575-a787-173eb3f85c13" isOneWay="false" action="urn:mediate" name="mediate" bindingOperationName="mediate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9fb8f3b7-bf47-4f28-82c8-ef37bb55c967" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="card-no" value="111-22-3333-444444"/>
+  &lt;con:entry key="number-of-months" value="8"/>
+&lt;/xml-fragment></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+   	<vehicle-number>SPKP-6531</vehicle-number>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:mediate"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="ab334086-d905-4a09-bf6c-21ed39d1e7fc" wsaVersion="NONE" name="LicenseProxySoap12Binding" type="wsdl" bindingName="{http://ws.apache.org/axis2}LicenseProxySoap12Binding" soapVersion="1_2" anonymous="optional" definition="file:/D:/learn/wso2%20boot%20camp/day9-10/LicenseProxy.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\learn\wso2%20boot%20camp\day9-10\LicenseProxy.xml"><con:part><con:url>file:\D:\learn\wso2%20boot%20camp\day9-10\LicenseProxy.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://ws.apache.org/axis2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.apache.org/axis2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types/>
+  <wsdl:message name="in"/>
+  <wsdl:message name="out"/>
+  <wsdl:portType name="LicenseProxyPortType">
+    <wsdl:operation name="mediate">
+      <wsdl:input message="tns:in" wsaw:Action="urn:mediate"/>
+      <wsdl:output message="tns:out" wsaw:Action="urn:mediateResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LicenseProxySoap11Binding" type="tns:LicenseProxyPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="mediate">
+      <soap:operation soapAction="urn:mediate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseProxySoap12Binding" type="tns:LicenseProxyPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="mediate">
+      <soap12:operation soapAction="urn:mediate" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseProxyHttpBinding" type="tns:LicenseProxyPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="mediate">
+      <http:operation location="mediate"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LicenseProxy">
+    <wsdl:port name="LicenseProxyHttpSoap11Endpoint" binding="tns:LicenseProxySoap11Binding">
+      <soap:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpsSoap11Endpoint" binding="tns:LicenseProxySoap11Binding">
+      <soap:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpSoap12Endpoint" binding="tns:LicenseProxySoap12Binding">
+      <soap12:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpsSoap12Endpoint" binding="tns:LicenseProxySoap12Binding">
+      <soap12:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpsEndpoint" binding="tns:LicenseProxyHttpBinding">
+      <http:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsEndpoint"/>
+    </wsdl:port>
+    <wsdl:port name="LicenseProxyHttpEndpoint" binding="tns:LicenseProxyHttpBinding">
+      <http:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpEndpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap12Endpoint</con:endpoint><con:endpoint>https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsSoap12Endpoint</con:endpoint></con:endpoints><con:operation id="be785db7-0c34-4cd1-aeba-6543793305de" isOneWay="false" action="urn:mediate" name="mediate" bindingOperationName="mediate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3ccc80b0-458e-4716-bbe1-f79acdb2f640" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap12Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+   	<vehicle-number>SPKP-6531</vehicle-number>
+   	<number-of-months>3</number-of-months>
+   	<card-no>111-22-3333-444444</card-no>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:mediate"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

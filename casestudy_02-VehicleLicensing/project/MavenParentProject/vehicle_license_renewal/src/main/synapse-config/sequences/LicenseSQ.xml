@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="LicenseSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <payloadFactory media-type="xml">
+        <format>
+            <sam:renewLicense xmlns:sam="http://sample.esb.org">
+                <sam:vehicleNumber>$1</sam:vehicleNumber>
+                <sam:insurancePolicy>$2</sam:insurancePolicy>
+                <sam:ecoCert>$3</sam:ecoCert>
+            </sam:renewLicense>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:vehicle_number"/>
+            <arg evaluator="xml" expression="$ctx:insurance_policy_id"/>
+            <arg evaluator="xml" expression="$ctx:emission_test_certificate_id"/>
+        </args>
+    </payloadFactory>
+    <!--     <property name="SOAPAction" scope="transport" type="STRING" value="urn:renewLicense"/> -->
+    <log level="full">
+        <property name="===============sequence===============" value="Request for the License Service"/>
+    </log>
+    <call>
+        <endpoint key="LicenseServiceEP"/>
+    </call>
+    <log level="full">
+        <property name="===============sequence===============" value="Response from the License Service"/>
+    </log>
+    <property expression="//*[local-name()='fee']" name="license_fee" scope="default" type="STRING"/>
+    <property expression="//*[local-name()='referenceNo']" name="license_reference_no" scope="default" type="STRING"/>
+</sequence>

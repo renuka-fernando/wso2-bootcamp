@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="6b166856-55fb-4a03-948e-cc42e2207f66" activeEnvironment="Default" name="TestProxy" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="23dfb7d6-38e4-4d52-87ef-1588facf99d0" wsaVersion="NONE" name="TestProxySoap12Binding" type="wsdl" bindingName="{http://ws.apache.org/axis2}TestProxySoap12Binding" soapVersion="1_2" anonymous="optional" definition="file:/D:/learn/wso2%20boot%20camp/day9-10/TestProxy.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/D:/learn/wso2%20boot%20camp/day9-10/TestProxy.xml"><con:part><con:url>file:/D:/learn/wso2%20boot%20camp/day9-10/TestProxy.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://ws.apache.org/axis2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.apache.org/axis2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types/>
+  <wsdl:message name="in"/>
+  <wsdl:message name="out"/>
+  <wsdl:portType name="TestProxyPortType">
+    <wsdl:operation name="mediate">
+      <wsdl:input message="tns:in" wsaw:Action="urn:mediate"/>
+      <wsdl:output message="tns:out" wsaw:Action="urn:mediateResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TestProxySoap11Binding" type="tns:TestProxyPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="mediate">
+      <soap:operation soapAction="urn:mediate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TestProxySoap12Binding" type="tns:TestProxyPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="mediate">
+      <soap12:operation soapAction="urn:mediate" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TestProxyHttpBinding" type="tns:TestProxyPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="mediate">
+      <http:operation location="mediate"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TestProxy">
+    <wsdl:port name="TestProxyHttpsSoap11Endpoint" binding="tns:TestProxySoap11Binding">
+      <soap:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpSoap11Endpoint" binding="tns:TestProxySoap11Binding">
+      <soap:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpSoap12Endpoint" binding="tns:TestProxySoap12Binding">
+      <soap12:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpsSoap12Endpoint" binding="tns:TestProxySoap12Binding">
+      <soap12:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpsEndpoint" binding="tns:TestProxyHttpBinding">
+      <http:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsEndpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpEndpoint" binding="tns:TestProxyHttpBinding">
+      <http:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpEndpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap12Endpoint</con:endpoint><con:endpoint>https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsSoap12Endpoint</con:endpoint></con:endpoints><con:operation id="6911fe9e-b9e9-419e-9405-bbab05d224ee" isOneWay="false" action="urn:mediate" name="mediate" bindingOperationName="mediate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0fe0d533-cf2a-4b35-9e96-9ddb51fd8f87" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap12Endpoint</con:endpoint><con:request>&lt;soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">\r
+   &lt;soap:Header/>\r
+   &lt;soap:Body/>\r
+&lt;/soap:Envelope></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:mediate"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="31fcb214-60b4-437c-83fe-f828237f57bd" wsaVersion="NONE" name="TestProxySoap11Binding" type="wsdl" bindingName="{http://ws.apache.org/axis2}TestProxySoap11Binding" soapVersion="1_1" anonymous="optional" definition="file:/D:/learn/wso2%20boot%20camp/day9-10/TestProxy.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\learn\wso2%20boot%20camp\day9-10\TestProxy.xml"><con:part><con:url>file:\D:\learn\wso2%20boot%20camp\day9-10\TestProxy.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://ws.apache.org/axis2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.apache.org/axis2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types/>
+  <wsdl:message name="in"/>
+  <wsdl:message name="out"/>
+  <wsdl:portType name="TestProxyPortType">
+    <wsdl:operation name="mediate">
+      <wsdl:input message="tns:in" wsaw:Action="urn:mediate"/>
+      <wsdl:output message="tns:out" wsaw:Action="urn:mediateResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TestProxySoap11Binding" type="tns:TestProxyPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="mediate">
+      <soap:operation soapAction="urn:mediate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TestProxySoap12Binding" type="tns:TestProxyPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="mediate">
+      <soap12:operation soapAction="urn:mediate" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TestProxyHttpBinding" type="tns:TestProxyPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="mediate">
+      <http:operation location="mediate"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TestProxy">
+    <wsdl:port name="TestProxyHttpsSoap11Endpoint" binding="tns:TestProxySoap11Binding">
+      <soap:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpSoap11Endpoint" binding="tns:TestProxySoap11Binding">
+      <soap:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpSoap12Endpoint" binding="tns:TestProxySoap12Binding">
+      <soap12:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpsSoap12Endpoint" binding="tns:TestProxySoap12Binding">
+      <soap12:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpsEndpoint" binding="tns:TestProxyHttpBinding">
+      <http:address location="https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsEndpoint"/>
+    </wsdl:port>
+    <wsdl:port name="TestProxyHttpEndpoint" binding="tns:TestProxyHttpBinding">
+      <http:address location="http://SL-RFernando:8281/services/TestProxy.TestProxyHttpEndpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap11Endpoint</con:endpoint><con:endpoint>https://SL-RFernando:8244/services/TestProxy.TestProxyHttpsSoap11Endpoint</con:endpoint></con:endpoints><con:operation id="f40e4d09-8c9b-45e5-97a8-be8806907dc9" isOneWay="false" action="urn:mediate" name="mediate" bindingOperationName="mediate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d0210008-ea89-4da2-b112-bfeb48d9c2b9" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SL-RFernando:8281/services/TestProxy.TestProxyHttpSoap11Endpoint</con:endpoint><con:request>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">\r
+   &lt;soapenv:Header/>\r
+   &lt;soapenv:Body/>\r
+&lt;/soapenv:Envelope></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:mediate"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

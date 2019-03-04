@@ -1,0 +1,23 @@
+<header description="SOAPAction" name="SOAPAction" scope="transport" value="urn:mediate"/>
+<property name="REST_URL_POSTFIX" scope="axis2" action="remove"/>
+<property expression="json-eval($.vehicleNumber)" name="vehicleNumber"/>
+<property expression="json-eval($.cardNo)" name="cardNo"/>
+<property expression="json-eval($.numberOfMonths)" name="numberOfMonths"/>
+
+
+<payloadFactory description="transform" media-type="xml">
+  <format>
+  <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://ws.apache.org/axis2">
+  <soapenv:Header/>
+  <soapenv:Body>
+   <vehicle-number>$1</vehicle-number>
+  </soapenv:Body>
+  </soapenv:Envelope>
+  </format>
+  <args>
+ 	<arg evaluator="xml" expression="$ctx:vehicleNumber"/>
+  </args>
+</payloadFactory>
+<header name="card-no" expression="$ctx:cardNo" scope="transport"/>
+<header name="number-of-months" expression="$ctx:numberOfMonths" scope="transport"/>
+<property description="messageProperty" name="messageType" scope="axis2" type="STRING" value="application/soap+xml"/>

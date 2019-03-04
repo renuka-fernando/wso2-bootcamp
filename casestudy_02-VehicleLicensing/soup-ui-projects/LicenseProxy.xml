@@ -1,0 +1,67 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.apache.org/axis2" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://ws.apache.org/axis2">
+   <wsdl:types/>
+   <wsdl:message name="in"/>
+   <wsdl:message name="out"/>
+   <wsdl:portType name="LicenseProxyPortType">
+      <wsdl:operation name="mediate">
+         <wsdl:input message="tns:in" wsaw:Action="urn:mediate"/>
+         <wsdl:output message="tns:out" wsaw:Action="urn:mediateResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="LicenseProxySoap11Binding" type="tns:LicenseProxyPortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="mediate">
+         <soap:operation soapAction="urn:mediate" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="LicenseProxySoap12Binding" type="tns:LicenseProxyPortType">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="mediate">
+         <soap12:operation soapAction="urn:mediate" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="LicenseProxyHttpBinding" type="tns:LicenseProxyPortType">
+      <http:binding verb="POST"/>
+      <wsdl:operation name="mediate">
+         <http:operation location="mediate"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="LicenseProxy">
+      <wsdl:port name="LicenseProxyHttpSoap11Endpoint" binding="tns:LicenseProxySoap11Binding">
+         <soap:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="LicenseProxyHttpsSoap11Endpoint" binding="tns:LicenseProxySoap11Binding">
+         <soap:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsSoap11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="LicenseProxyHttpSoap12Endpoint" binding="tns:LicenseProxySoap12Binding">
+         <soap12:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpSoap12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="LicenseProxyHttpsSoap12Endpoint" binding="tns:LicenseProxySoap12Binding">
+         <soap12:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsSoap12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="LicenseProxyHttpsEndpoint" binding="tns:LicenseProxyHttpBinding">
+         <http:address location="https://SL-RFernando:8244/services/LicenseProxy.LicenseProxyHttpsEndpoint"/>
+      </wsdl:port>
+      <wsdl:port name="LicenseProxyHttpEndpoint" binding="tns:LicenseProxyHttpBinding">
+         <http:address location="http://SL-RFernando:8281/services/LicenseProxy.LicenseProxyHttpEndpoint"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

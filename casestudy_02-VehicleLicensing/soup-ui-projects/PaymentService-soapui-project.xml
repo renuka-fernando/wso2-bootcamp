@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c65ed3f4-c9d2-4c7a-9d52-5df5f6d11189" activeEnvironment="Default" name="PaymentService" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="98eb02d4-5468-4866-b5af-2a07cdca4ca1" wsaVersion="NONE" name="PaymentServiceSoap11Binding" type="wsdl" bindingName="{http://sample.esb.org}PaymentServiceSoap11Binding" soapVersion="1_1" anonymous="optional" definition="file:/D:/learn/wso2%20boot%20camp/day9/Tutorial%201%20-%203/PaymentService.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/D:/learn/wso2%20boot%20camp/day9/Tutorial%201%20-%203/PaymentService.xml"><con:part><con:url>file:/D:/learn/wso2%20boot%20camp/day9/Tutorial%201%20-%203/PaymentService.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://sample.esb.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://sample.esb.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>PaymentService</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.esb.org">
+      <xs:element name="PaymentServiceException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PaymentServiceException" nillable="true" type="ns:Exception"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="doPayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="cardNo" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="doPaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="doPaymentRequest">
+    <wsdl:part name="parameters" element="ns:doPayment"/>
+  </wsdl:message>
+  <wsdl:message name="doPaymentResponse">
+    <wsdl:part name="parameters" element="ns:doPaymentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PaymentServiceException">
+    <wsdl:part name="parameters" element="ns:PaymentServiceException"/>
+  </wsdl:message>
+  <wsdl:portType name="PaymentServicePortType">
+    <wsdl:operation name="doPayment">
+      <wsdl:input message="ns:doPaymentRequest" wsaw:Action="urn:doPayment"/>
+      <wsdl:output message="ns:doPaymentResponse" wsaw:Action="urn:doPaymentResponse"/>
+      <wsdl:fault message="ns:PaymentServiceException" name="PaymentServiceException" wsaw:Action="urn:doPaymentPaymentServiceException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PaymentServiceSoap11Binding" type="ns:PaymentServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="doPayment">
+      <soap:operation soapAction="urn:doPayment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PaymentServiceException">
+        <soap:fault use="literal" name="PaymentServiceException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PaymentServiceSoap12Binding" type="ns:PaymentServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="doPayment">
+      <soap12:operation soapAction="urn:doPayment" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PaymentServiceException">
+        <soap12:fault use="literal" name="PaymentServiceException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PaymentServiceHttpBinding" type="ns:PaymentServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="doPayment">
+      <http:operation location="doPayment"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaymentService">
+    <wsdl:port name="PaymentServiceHttpsSoap11Endpoint" binding="ns:PaymentServiceSoap11Binding">
+      <soap:address location="https://192.168.200.97:9443/services/PaymentService.PaymentServiceHttpsSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpSoap11Endpoint" binding="ns:PaymentServiceSoap11Binding">
+      <soap:address location="http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpsSoap12Endpoint" binding="ns:PaymentServiceSoap12Binding">
+      <soap12:address location="https://192.168.200.97:9443/services/PaymentService.PaymentServiceHttpsSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpSoap12Endpoint" binding="ns:PaymentServiceSoap12Binding">
+      <soap12:address location="http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpsEndpoint" binding="ns:PaymentServiceHttpBinding">
+      <http:address location="https://192.168.200.97:9443/services/PaymentService.PaymentServiceHttpsEndpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpEndpoint" binding="ns:PaymentServiceHttpBinding">
+      <http:address location="http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpSoap11Endpoint/</con:endpoint><con:endpoint>https://192.168.200.97:9443/services/PaymentService.PaymentServiceHttpsSoap11Endpoint/</con:endpoint></con:endpoints><con:operation id="7813c1ed-56f2-4c83-9c1b-0c165e21a146" isOneWay="false" action="urn:doPayment" name="doPayment" bindingOperationName="doPayment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="11709eda-789c-4ad7-8307-928339961f94" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpSoap11Endpoint/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sam="http://sample.esb.org">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <sam:doPayment>\r
+         <!--Optional:-->\r
+         <sam:cardNo>12</sam:cardNo>\r
+         <!--Optional:-->\r
+         <sam:referenceNo>2ed31462-6b33-4164-b720-729798f8b677</sam:referenceNo>\r
+         <!--Optional:-->\r
+         <sam:amount>30</sam:amount>\r
+      </sam:doPayment>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:doPayment"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="aae9bb6c-fc3f-41de-8f49-63cb71b5548b" wsaVersion="NONE" name="PaymentServiceSoap12Binding" type="wsdl" bindingName="{http://sample.esb.org}PaymentServiceSoap12Binding" soapVersion="1_2" anonymous="optional" definition="file:/D:/learn/wso2%20boot%20camp/day9/Tutorial%201%20-%203/PaymentService.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\learn\wso2%20boot%20camp\day9\Tutorial%201%20-%203\PaymentService.xml"><con:part><con:url>file:\D:\learn\wso2%20boot%20camp\day9\Tutorial%201%20-%203\PaymentService.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://sample.esb.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://sample.esb.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>PaymentService</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.esb.org">
+      <xs:element name="PaymentServiceException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PaymentServiceException" nillable="true" type="ns:Exception"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="doPayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="cardNo" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="referenceNo" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="doPaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="doPaymentRequest">
+    <wsdl:part name="parameters" element="ns:doPayment"/>
+  </wsdl:message>
+  <wsdl:message name="doPaymentResponse">
+    <wsdl:part name="parameters" element="ns:doPaymentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="PaymentServiceException">
+    <wsdl:part name="parameters" element="ns:PaymentServiceException"/>
+  </wsdl:message>
+  <wsdl:portType name="PaymentServicePortType">
+    <wsdl:operation name="doPayment">
+      <wsdl:input message="ns:doPaymentRequest" wsaw:Action="urn:doPayment"/>
+      <wsdl:output message="ns:doPaymentResponse" wsaw:Action="urn:doPaymentResponse"/>
+      <wsdl:fault message="ns:PaymentServiceException" name="PaymentServiceException" wsaw:Action="urn:doPaymentPaymentServiceException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PaymentServiceSoap11Binding" type="ns:PaymentServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="doPayment">
+      <soap:operation soapAction="urn:doPayment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PaymentServiceException">
+        <soap:fault use="literal" name="PaymentServiceException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PaymentServiceSoap12Binding" type="ns:PaymentServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="doPayment">
+      <soap12:operation soapAction="urn:doPayment" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PaymentServiceException">
+        <soap12:fault use="literal" name="PaymentServiceException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PaymentServiceHttpBinding" type="ns:PaymentServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="doPayment">
+      <http:operation location="doPayment"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaymentService">
+    <wsdl:port name="PaymentServiceHttpsSoap11Endpoint" binding="ns:PaymentServiceSoap11Binding">
+      <soap:address location="https://192.168.200.97:9443/services/PaymentService.PaymentServiceHttpsSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpSoap11Endpoint" binding="ns:PaymentServiceSoap11Binding">
+      <soap:address location="http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpsSoap12Endpoint" binding="ns:PaymentServiceSoap12Binding">
+      <soap12:address location="https://192.168.200.97:9443/services/PaymentService.PaymentServiceHttpsSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpSoap12Endpoint" binding="ns:PaymentServiceSoap12Binding">
+      <soap12:address location="http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpsEndpoint" binding="ns:PaymentServiceHttpBinding">
+      <http:address location="https://192.168.200.97:9443/services/PaymentService.PaymentServiceHttpsEndpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="PaymentServiceHttpEndpoint" binding="ns:PaymentServiceHttpBinding">
+      <http:address location="http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpSoap12Endpoint/</con:endpoint><con:endpoint>https://192.168.200.97:9443/services/PaymentService.PaymentServiceHttpsSoap12Endpoint/</con:endpoint></con:endpoints><con:operation id="432bac3b-5044-434e-9e3a-83f26aa44a46" isOneWay="false" action="urn:doPayment" name="doPayment" bindingOperationName="doPayment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="48a73dc0-11c2-4458-b03d-3da3e2e48969" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.200.97:9763/services/PaymentService.PaymentServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:sam="http://sample.esb.org">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <sam:doPayment>\r
+         <!--Optional:-->\r
+         <sam:cardNo>?</sam:cardNo>\r
+         <!--Optional:-->\r
+         <sam:referenceNo>?</sam:referenceNo>\r
+         <!--Optional:-->\r
+         <sam:amount>?</sam:amount>\r
+      </sam:doPayment>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:doPayment"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

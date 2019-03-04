@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="InvalidPaymentSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="=====================Invalid Payment Sequence===================" value="INVALID SQ"/>
+    </log>
+    <store messageStore="LicenseInvalidPaymentJMSMS"/>
+</sequence>

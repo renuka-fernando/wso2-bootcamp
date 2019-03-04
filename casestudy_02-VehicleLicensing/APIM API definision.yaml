@@ -1,0 +1,43 @@
+swagger: "2.0"
+paths:
+  /mediate:
+    post:
+      tags:
+        - license
+      consumes:
+        - application/json
+      produces:
+        - application/xml
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Payment"
+      responses:
+        "200":
+          description: ""
+      x-wso2-soap:
+        soap-action: "urn:mediate"
+        soap-operation: mediate
+        namespace: "http://sample.esb.org"
+        x-soap-version: "1.2"
+      x-auth-type: "Application & Application User"
+      x-throttling-tier: Unlimited
+definitions:
+  Payment:
+    type: object
+    properties:
+      vehicleNumber:
+        type: string
+        example: xxx-xxx
+      cardNo:
+        type: string
+        example: xxx-xxx-xxx-xxx
+      numberOfMonths:
+        type: integer
+        format: int64
+info:
+  title: VehicleLicense
+  version: v1.0.0
+  description: Licensing vehicles

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="LicenseProxy" groupId="com.example.vehicle_license_renewal.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/LicenseProxy.xml</file>
+    </artifact>
+    <artifact name="InsuranceEP" groupId="com.example.vehicle_license_renewal.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/InsuranceEP.xml</file>
+    </artifact>
+    <artifact name="InsuranceSQ" groupId="com.example.vehicle_license_renewal.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/InsuranceSQ.xml</file>
+    </artifact>
+    <artifact name="EmissionTestSQ" groupId="com.example.vehicle_license_renewal.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/EmissionTestSQ.xml</file>
+    </artifact>
+    <artifact name="EmissionTestEP" groupId="com.example.vehicle_license_renewal.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/EmissionTestEP.xml</file>
+    </artifact>
+    <artifact name="LicenseSQ" groupId="com.example.vehicle_license_renewal.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/LicenseSQ.xml</file>
+    </artifact>
+    <artifact name="LicenseServiceEP" groupId="com.example.vehicle_license_renewal.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/LicenseServiceEP.xml</file>
+    </artifact>
+    <artifact name="PaymentSQ" groupId="com.example.vehicle_license_renewal.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PaymentSQ.xml</file>
+    </artifact>
+    <artifact name="PaymentEP" groupId="com.example.vehicle_license_renewal.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/PaymentEP.xml</file>
+    </artifact>
+    <artifact name="LicensePaymentJMSMS" groupId="com.example.vehicle_license_renewal.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/LicensePaymentJMSMS.xml</file>
+    </artifact>
+    <artifact name="PaymentMessageProcessor" groupId="com.example.vehicle_license_renewal.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/PaymentMessageProcessor.xml</file>
+    </artifact>
+    <artifact name="PaymentReplySQ" groupId="com.example.vehicle_license_renewal.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PaymentReplySQ.xml</file>
+    </artifact>
+    <artifact name="LicenseAPI" groupId="com.example.vehicle_license_renewal.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/LicenseAPI.xml</file>
+    </artifact>
+    <artifact name="InvalidPaymentSQ" groupId="com.example.vehicle_license_renewal.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/InvalidPaymentSQ.xml</file>
+    </artifact>
+    <artifact name="LicenseInvalidPaymentJMSMS" groupId="com.example.vehicle_license_renewal.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/LicenseInvalidPaymentJMSMS.xml</file>
+    </artifact>
+    <artifact name="InvalidPaymentMessageProcessor" groupId="com.example.vehicle_license_renewal.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/InvalidPaymentMessageProcessor.xml</file>
+    </artifact>
+    <artifact name="ResponseSQ" groupId="com.example.vehicle_license_renewal.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/ResponseSQ.xml</file>
+    </artifact>
+</artifacts>

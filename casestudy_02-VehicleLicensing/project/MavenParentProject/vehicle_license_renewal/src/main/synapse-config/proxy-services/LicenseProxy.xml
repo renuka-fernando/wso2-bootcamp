@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="LicenseProxy" startOnLoad="true" transports="https http" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full">
+                <property name="===============sequence===============" value="Request from client"/>
+            </log>
+            <property expression="//*[local-name()='vehicle-number']" name="vehicle_number" scope="default" type="STRING"/>
+            <property expression="$trp:number-of-months" name="number_of_months" scope="default" type="STRING"/>
+            <property expression="$trp:card-no" name="card_no" scope="default" type="STRING"/>
+            <sequence key="InsuranceSQ"/>
+            <sequence key="EmissionTestSQ"/>
+            <sequence key="LicenseSQ"/>
+            <property expression="$ctx:number_of_months" name="num_of_months" scope="default" type="INTEGER"/>
+            <property expression="$ctx:license_fee" name="insurance_rate" scope="default" type="DOUBLE"/>
+            <class name="com.renuka.vehiclelicense.PaymentCalculator"/>
+            <log level="custom">
+                <property expression="$ctx:final_payment" name="=======================Final-Payment======================="/>
+            </log>
+            <sequence key="PaymentSQ"/>
+            <loopback/>
+        </inSequence>
+        <outSequence>
+            <sequence key="ResponseSQ"/>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+</proxy>

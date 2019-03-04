@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="EmissionTestSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <payloadFactory media-type="xml">
+        <format>
+            <sam:getCertificateID xmlns:sam="http://sample.esb.org">
+                <sam:vehicleNumber>$1</sam:vehicleNumber>
+            </sam:getCertificateID>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:vehicle_number" xmlns:sam="http://sample.esb.org"/>
+        </args>
+    </payloadFactory>
+    <!--     <property name="SOAPAction" scope="transport" type="STRING" value="urn:getCertificateID"/> -->
+    <log level="full">
+        <property name="===============sequence===============" value="Request for the Emission Test"/>
+    </log>
+    <call>
+        <endpoint key="EmissionTestEP"/>
+    </call>
+    <log level="full">
+        <property name="===============sequence===============" value="Response from the Emission Test"/>
+    </log>
+    <property expression="//*[local-name()='return']" name="emission_test_certificate_id" scope="default" type="STRING"/>
+</sequence>

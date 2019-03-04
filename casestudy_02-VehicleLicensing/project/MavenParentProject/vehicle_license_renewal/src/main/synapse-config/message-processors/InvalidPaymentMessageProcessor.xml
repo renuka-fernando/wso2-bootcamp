@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messageProcessor class="org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor" messageStore="LicenseInvalidPaymentJMSMS" name="InvalidPaymentMessageProcessor" targetEndpoint="PaymentEP" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="client.retry.interval">1000</parameter>
+    <parameter name="max.delivery.attempts">4</parameter>
+    <parameter name="member.count">1</parameter>
+    <parameter name="message.processor.reply.sequence">PaymentReplySQ</parameter>
+    <parameter name="max.delivery.drop">Disabled</parameter>
+    <parameter name="interval">1000</parameter>
+    <parameter name="is.active">false</parameter>
+</messageProcessor>

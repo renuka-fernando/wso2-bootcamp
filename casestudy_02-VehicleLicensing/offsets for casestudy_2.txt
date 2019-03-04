@@ -1,0 +1,8 @@
+Application Server - no offset
+.\bin\wso2server.bat
+ESB - offset = 1
+.\bin\wso2server.bat -DportOffset=1
+MB - offset = 2 (done in properties file for permanent)
+.\bin\wso2server.bat
+APIM - offset = 3
+.\bin\wso2server.bat -DportOffset=3

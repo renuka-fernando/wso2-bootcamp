@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="InsuranceSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <payloadFactory media-type="xml">
+        <format>
+            <sam:getPolicyID xmlns:sam="http://sample.esb.org">
+                <sam:vehicleNumber>$1</sam:vehicleNumber>
+            </sam:getPolicyID>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:vehicle_number" xmlns:sam="http://sample.esb.org"/>
+        </args>
+    </payloadFactory>
+    <!--     <property name="SOAPAction" scope="transport" type="STRING" value="urn:getPolicyID"/> -->
+    <log level="full">
+        <property name="===============sequence===============" value="Request for the Insurance Policy ID"/>
+    </log>
+    <call>
+        <endpoint key="InsuranceEP"/>
+    </call>
+    <log level="full">
+        <property name="===============sequence===============" value="Response from the Insurance Service"/>
+    </log>
+    <property expression="//*[local-name()='return']" name="insurance_policy_id" scope="default" type="STRING"/>
+</sequence>

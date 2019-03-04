@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/license" name="LicenseAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <log level="full">
+                <property name="===============sequence===============" value="Request from client"/>
+            </log>
+            <property expression="json-eval($.vehicle-number)" name="vehicle-number" scope="default" type="STRING"/>
+            <property name="card_no" scope="default" type="STRING" value="55505"/>
+            <sequence key="InsuranceSQ"/>
+            <sequence key="EmissionTestSQ"/>
+            <sequence key="LicenseSQ"/>
+            <property name="num_of_months" scope="default" type="INTEGER" value="5"/>
+            <property name="insurance_rate" scope="default" type="DOUBLE" value="30.0"/>
+            <class name="com.renuka.vehiclelicense.PaymentCalculator"/>
+            <log level="custom">
+                <property expression="$ctx:final_payment" name="=======================Final-Payment======================="/>
+            </log>
+            <sequence key="PaymentSQ"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

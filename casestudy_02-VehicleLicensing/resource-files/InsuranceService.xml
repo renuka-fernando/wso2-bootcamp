@@ -1,0 +1,111 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://sample.esb.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://sample.esb.org">
+    <wsdl:documentation>InsuranceService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.esb.org">
+            <xs:element name="InsuranceServiceException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="InsuranceServiceException" nillable="true" type="ns:Exception"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getPolicyID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getPolicyIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getPolicyIDRequest">
+        <wsdl:part name="parameters" element="ns:getPolicyID"/>
+    </wsdl:message>
+    <wsdl:message name="getPolicyIDResponse">
+        <wsdl:part name="parameters" element="ns:getPolicyIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="InsuranceServiceException">
+        <wsdl:part name="parameters" element="ns:InsuranceServiceException"/>
+    </wsdl:message>
+    <wsdl:portType name="InsuranceServicePortType">
+        <wsdl:operation name="getPolicyID">
+            <wsdl:input message="ns:getPolicyIDRequest" wsaw:Action="urn:getPolicyID"/>
+            <wsdl:output message="ns:getPolicyIDResponse" wsaw:Action="urn:getPolicyIDResponse"/>
+            <wsdl:fault message="ns:InsuranceServiceException" name="InsuranceServiceException" wsaw:Action="urn:getPolicyIDInsuranceServiceException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="InsuranceServiceSoap11Binding" type="ns:InsuranceServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getPolicyID">
+            <soap:operation soapAction="urn:getPolicyID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="InsuranceServiceException">
+                <soap:fault use="literal" name="InsuranceServiceException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="InsuranceServiceSoap12Binding" type="ns:InsuranceServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getPolicyID">
+            <soap12:operation soapAction="urn:getPolicyID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="InsuranceServiceException">
+                <soap12:fault use="literal" name="InsuranceServiceException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="InsuranceServiceHttpBinding" type="ns:InsuranceServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getPolicyID">
+            <http:operation location="getPolicyID"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="InsuranceService">
+        <wsdl:port name="InsuranceServiceHttpsSoap11Endpoint" binding="ns:InsuranceServiceSoap11Binding">
+            <soap:address location="https://192.168.200.97:9443/services/InsuranceService.InsuranceServiceHttpsSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InsuranceServiceHttpSoap11Endpoint" binding="ns:InsuranceServiceSoap11Binding">
+            <soap:address location="http://192.168.200.97:9763/services/InsuranceService.InsuranceServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InsuranceServiceHttpsSoap12Endpoint" binding="ns:InsuranceServiceSoap12Binding">
+            <soap12:address location="https://192.168.200.97:9443/services/InsuranceService.InsuranceServiceHttpsSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InsuranceServiceHttpSoap12Endpoint" binding="ns:InsuranceServiceSoap12Binding">
+            <soap12:address location="http://192.168.200.97:9763/services/InsuranceService.InsuranceServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InsuranceServiceHttpEndpoint" binding="ns:InsuranceServiceHttpBinding">
+            <http:address location="http://192.168.200.97:9763/services/InsuranceService.InsuranceServiceHttpEndpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InsuranceServiceHttpsEndpoint" binding="ns:InsuranceServiceHttpBinding">
+            <http:address location="https://192.168.200.97:9443/services/InsuranceService.InsuranceServiceHttpsEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

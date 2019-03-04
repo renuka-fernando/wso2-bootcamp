@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="ResponseSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <filter xpath="$ctx:payment_validity">
+        <then>
+            <property name="payment_request" scope="default" type="STRING" value="Your payment request has been placed"/>
+        </then>
+        <else>
+            <property name="payment_request" scope="default" type="STRING" value="Invalid payment request. Your payment request has not been placed"/>
+        </else>
+    </filter>
+    <payloadFactory media-type="json">
+        <format>
+{
+	"InsurancePolicyID": "$1",
+	"EmissionTestCertificateID": "$2",
+	"LicenseRefferenceNo": "$3",
+	"PerMonthLicenseFee": "$4",
+	"LicenseFee": "$5",
+	"PaymentRequest": "$6"
+}
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:insurance_policy_id"/>
+            <arg evaluator="xml" expression="$ctx:emission_test_certificate_id"/>
+            <arg evaluator="xml" expression="$ctx:license_reference_no"/>
+            <arg evaluator="xml" expression="$ctx:license_fee"/>
+            <arg evaluator="xml" expression="$ctx:final_payment"/>
+            <arg evaluator="xml" expression="$ctx:payment_request"/>
+        </args>
+    </payloadFactory>
+</sequence>
