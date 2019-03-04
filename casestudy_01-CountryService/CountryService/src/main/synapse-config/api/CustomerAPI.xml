@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/customers" name="CustomerAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/{customer_id}">
+        <inSequence>
+            <log level="full">
+                <property name="start full log" value="************************ FULL LOG **************************"/>
+            </log>
+            <property description="Country Code" expression="$trp:countrycode" name="country_code" scope="default" type="STRING"/>
+            <property description="Customer Id" expression="//*[local-name()='customer-id']" name="customer_id" scope="default" type="STRING"/>
+            <property description="First Name" expression="//customers/customer/customer-first-name" name="first_name" scope="default" type="STRING"/>
+            <property description="Last Name" expression="//*[local-name()='customer-last-name']" name="last_name" scope="default" type="STRING"/>
+            <property description="Address 1" expression="//*[local-name()='address-line1']" name="address_1" scope="default" type="STRING"/>
+            <property description="Address 2" expression="//*[local-name()='address-line2']" name="address_2" scope="default" type="STRING"/>
+            <property description="Street" expression="//*[local-name()='street']" name="street" scope="default" type="STRING"/>
+            <property description="City" expression="//*[local-name()='city']" name="city" scope="default" type="STRING"/>
+            <log description="Customer Log" level="custom">
+                <property expression="get-property('customer_id')" name="Customer ID"/>
+            </log>
+            <log description="Request Log" level="custom">
+                <property expression="get-property('country_code')" name="Country Code"/>
+            </log>
+            <switch description="" source="get-property('country_code')">
+                <case regex="^UK$">
+                    <log description="UK Log" level="custom">
+                        <property name="CASE" value="UK Case"/>
+                    </log>
+                    <property description="Set Country Code" name="uri.var.country_code" scope="default" type="STRING" value="uk"/>
+                    <call>
+                        <endpoint key="CountryEP"/>
+                    </call>
+                </case>
+                <case regex="^US$">
+                    <log description="US Log" level="custom">
+                        <property name="CASE" value="US Case"/>
+                    </log>
+                    <property description="Set Country Code" name="uri.var.country_code" scope="default" type="STRING" value="us"/>
+                    <call>
+                        <endpoint key="CountryEP"/>
+                    </call>
+                </case>
+                <case regex="^CA$">
+                    <log description="CA Log" level="custom">
+                        <property name="CASE" value="CA Case"/>
+                    </log>
+                    <property description="Set Country Code" name="uri.var.country_code" scope="default" type="STRING" value="ca"/>
+                    <call>
+                        <endpoint key="CountryEP"/>
+                    </call>
+                </case>
+                <default>
+                    <log description="Other Log"/>
+                    <payloadFactory media-type="json">
+                        <format>{&#xd;
+							"errorCode": 1001,&#xd;
+							"errorMesage": "Invalid country code : FR"&#xd;
+							}</format>
+                        <args/>
+                    </payloadFactory>
+                    <respond/>
+                </default>
+            </switch>
+            <property description="Get Country Name" expression="json-eval($.country)" name="uri.var.country_name" scope="default" type="STRING"/>
+            <log description="Country Name Log" level="custom">
+                <property expression="get-property('uri.var.country_name')" name="Country Name"/>
+            </log>
+            <call>
+                <endpoint key="CurrencyEP"/>
+            </call>
+            <property description="Get Currency" expression="json-eval($.currancy)" name="currency" scope="default" type="STRING"/>
+            <log description="Currency Log" level="custom">
+                <property expression="get-property('currency')" name="Currency"/>
+            </log>
+            <call>
+                <endpoint key="TImeEP"/>
+            </call>
+            <property description="Get Time" expression="json-eval($.time)" name="country_time" scope="default" type="STRING"/>
+            <log description="Log Time" level="custom">
+                <property expression="get-property('country_time')" name="Country Time"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>
+{&#xd;
+	"customerIdentifier": $1,&#xd;
+	"customerFullName": "$2",&#xd;
+	"address": "$3",&#xd;
+	"country": "$4",&#xd;
+	"currency": "$5",&#xd;
+	"GMTTimeNow": "$6"&#xd;
+}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:uri.var.customer_id"/>
+                    <arg evaluator="xml" expression="fn:concat($ctx:first_name,' ', $ctx:last_name)"/>
+                    <arg evaluator="xml" expression="fn:concat($ctx:address_1,' ', $ctx:address_2,' ', $ctx:street,' ', $ctx:city)"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.country_name"/>
+                    <arg evaluator="xml" expression="$ctx:currency"/>
+                    <arg evaluator="xml" expression="$ctx:country_time"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <property description="Country Name" expression="json-eval($.country)" name="uri.var.country_name" scope="default" type="STRING"/>
+            <log description="Country Name Log" level="custom">
+                <property expression="get-property('uri.var.country_name')" name="Country Name"/>
+            </log>
+            <respond/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

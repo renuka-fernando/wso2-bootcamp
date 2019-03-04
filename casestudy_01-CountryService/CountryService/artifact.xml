@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="CustomerAPI" groupId="com.example.CountryService.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/CustomerAPI.xml</file>
+    </artifact>
+    <artifact name="CountryEP" groupId="com.example.CountryService.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/CountryEP.xml</file>
+    </artifact>
+    <artifact name="CurrencyEP" groupId="com.example.CountryService.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/CurrencyEP.xml</file>
+    </artifact>
+    <artifact name="TImeEP" groupId="com.example.CountryService.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/TImeEP.xml</file>
+    </artifact>
+    <artifact name="Test" groupId="com.example.CountryService.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/Test.xml</file>
+    </artifact>
+    <artifact name="MyScheduledTask" groupId="com.example.CountryService.task" version="1.0.0" type="synapse/task" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/tasks/MyScheduledTask.xml</file>
+    </artifact>
+</artifacts>
