@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="UsersAPI" groupId="com.renuka.tp.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/UsersAPI.xml</file>
+    </artifact>
+    <artifact name="GetUserSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/GetUserSQ.xml</file>
+    </artifact>
+    <artifact name="PostUserSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PostUserSQ.xml</file>
+    </artifact>
+    <artifact name="GetUserEP" groupId="com.renuka.tp.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/GetUserEP.xml</file>
+    </artifact>
+    <artifact name="PostUserEP" groupId="com.renuka.tp.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/PostUserEP.xml</file>
+    </artifact>
+    <artifact name="PutUserEP" groupId="com.renuka.tp.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/PutUserEP.xml</file>
+    </artifact>
+    <artifact name="DeleteUserEP" groupId="com.renuka.tp.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/DeleteUserEP.xml</file>
+    </artifact>
+    <artifact name="PostUserOutSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PostUserOutSQ.xml</file>
+    </artifact>
+    <artifact name="DeleteUserSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/DeleteUserSQ.xml</file>
+    </artifact>
+    <artifact name="DeletedUsersQueueEP" groupId="com.renuka.tp.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/DeletedUsersQueueEP.xml</file>
+    </artifact>
+    <artifact name="ReadDeletedTpUsersProxy" groupId="com.renuka.tp.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/ReadDeletedTpUsersProxy.xml</file>
+    </artifact>
+    <artifact name="CreateUsersFromFileProxy" groupId="com.renuka.tp.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/CreateUsersFromFileProxy.xml</file>
+    </artifact>
+    <artifact name="smooks-key" groupId="com.renuka.tp.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/smooks-key.xml</file>
+    </artifact>
+    <artifact name="TrancateUsersEP" groupId="com.renuka.tp.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/TrancateUsersEP.xml</file>
+    </artifact>
+    <artifact name="DeleteUserOutSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/DeleteUserOutSQ.xml</file>
+    </artifact>
+    <artifact name="TrancateTpUsersProxy" groupId="com.renuka.tp.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/TrancateTpUsersProxy.xml</file>
+    </artifact>
+    <artifact name="DeleteTpUsersDbTask" groupId="com.renuka.tp.task" version="1.0.0" type="synapse/task" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/tasks/DeleteTpUsersDbTask.xml</file>
+    </artifact>
+    <artifact name="PutUserSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PutUserSQ.xml</file>
+    </artifact>
+    <artifact name="PutUserOutSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PutUserOutSQ.xml</file>
+    </artifact>
+    <artifact name="GetUsersOutSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/GetUsersOutSQ.xml</file>
+    </artifact>
+    <artifact name="GetUserLikeNameEP" groupId="com.renuka.tp.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/GetUserLikeNameEP.xml</file>
+    </artifact>
+    <artifact name="GetUserLikeNameSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/GetUserLikeNameSQ.xml</file>
+    </artifact>
+    <artifact name="GetUserOutSQ" groupId="com.renuka.tp.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/GetUserOutSQ.xml</file>
+    </artifact>
+</artifacts>

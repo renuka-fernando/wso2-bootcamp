@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="__8vWIDquEemerJ9lFKFKlA" type="DataMapper" name="mapperconfig.datamapper_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_AFUqYDqvEemerJ9lFKFKlA" type="2002" fontName="Segoe UI">
+    <element xmi:type="datamapper:Input" href="mapperconfig.datamapper#//@input"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AFUqYTqvEemerJ9lFKFKlA" x="20" y="215" width="250" height="100"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_AFUqYjqvEemerJ9lFKFKlA" type="2003" fontName="Segoe UI">
+    <children xmi:type="notation:Shape" xmi:id="_PaL7kDqvEemerJ9lFKFKlA" type="3011" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_PaNJsDqvEemerJ9lFKFKlA" type="5003"/>
+      <children xmi:type="notation:Shape" xmi:id="_PaYv4DqvEemerJ9lFKFKlA" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_PaYv4jqvEemerJ9lFKFKlA" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_PajvADqvEemerJ9lFKFKlA" type="3020" fontName="Segoe UI">
+          <element xmi:type="datamapper:InNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PajvATqvEemerJ9lFKFKlA" x="-5" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_PajvAjqvEemerJ9lFKFKlA" type="3019" fontName="Segoe UI">
+          <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PajvAzqvEemerJ9lFKFKlA"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaYv4TqvEemerJ9lFKFKlA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_PaYv4zqvEemerJ9lFKFKlA" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_PaYv5TqvEemerJ9lFKFKlA" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_PaxKYDqvEemerJ9lFKFKlA" type="3020" fontName="Segoe UI">
+          <element xmi:type="datamapper:InNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.1/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaxKYTqvEemerJ9lFKFKlA" x="-5" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_PaxKYjqvEemerJ9lFKFKlA" type="3019" fontName="Segoe UI">
+          <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.1/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaxKYzqvEemerJ9lFKFKlA"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaYv5DqvEemerJ9lFKFKlA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_PaZW8DqvEemerJ9lFKFKlA" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_PaZW8jqvEemerJ9lFKFKlA" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_Pa9XoDqvEemerJ9lFKFKlA" type="3020" fontName="Segoe UI">
+          <element xmi:type="datamapper:InNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.2/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pa9XoTqvEemerJ9lFKFKlA" x="-5" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_Pa9XojqvEemerJ9lFKFKlA" type="3019" fontName="Segoe UI">
+          <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.2/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pa9XozqvEemerJ9lFKFKlA"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.2"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaZW8TqvEemerJ9lFKFKlA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_PaZW8zqvEemerJ9lFKFKlA" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_PaZW9TqvEemerJ9lFKFKlA" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_PbI90DqvEemerJ9lFKFKlA" type="3020" fontName="Segoe UI">
+          <element xmi:type="datamapper:InNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.3/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PbI90TqvEemerJ9lFKFKlA" x="-5" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_PbJk4DqvEemerJ9lFKFKlA" type="3019" fontName="Segoe UI">
+          <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.3/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PbJk4TqvEemerJ9lFKFKlA"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@node.3"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaZW9DqvEemerJ9lFKFKlA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_PaZW9jqvEemerJ9lFKFKlA" type="3020" fontName="Segoe UI">
+        <element xmi:type="datamapper:InNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaZW9zqvEemerJ9lFKFKlA" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_PaZW-DqvEemerJ9lFKFKlA" type="3019" fontName="Segoe UI">
+        <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@output/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaZW-TqvEemerJ9lFKFKlA"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="mapperconfig.datamapper#//@output/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PaL7kTqvEemerJ9lFKFKlA"/>
+    </children>
+    <element xmi:type="datamapper:Output" href="mapperconfig.datamapper#//@output"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AFUqYzqvEemerJ9lFKFKlA" x="106" width="250" height="100"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_TsCyUDqvEemerJ9lFKFKlA" type="2007" fontName="Segoe UI">
+    <children xmi:type="notation:Shape" xmi:id="_TsJgADqvEemerJ9lFKFKlA" type="3012" fontName="Segoe UI">
+      <children xmi:type="notation:Shape" xmi:id="_TsO_kDqvEemerJ9lFKFKlA" type="3013" fontName="Segoe UI">
+        <element xmi:type="datamapper:OperatorLeftContainer" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@leftContainer"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TsO_kTqvEemerJ9lFKFKlA"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_TsPmoDqvEemerJ9lFKFKlA" type="3016" fontName="Segoe UI">
+        <children xmi:type="notation:Shape" xmi:id="_TtWZ4DqvEemerJ9lFKFKlA" type="3017" fontName="Segoe UI">
+          <children xmi:type="notation:Shape" xmi:id="_TtXoADqvEemerJ9lFKFKlA" type="3018" fontName="Segoe UI">
+            <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TtXoATqvEemerJ9lFKFKlA"/>
+          </children>
+          <element xmi:type="datamapper:OperatorRightConnector" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TtWZ4TqvEemerJ9lFKFKlA"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_Ttb5cDqvEemerJ9lFKFKlA" type="3017" fontName="Segoe UI">
+          <children xmi:type="notation:Shape" xmi:id="_TtdHkDqvEemerJ9lFKFKlA" type="3018" fontName="Segoe UI">
+            <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.1/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TtdHkTqvEemerJ9lFKFKlA"/>
+          </children>
+          <element xmi:type="datamapper:OperatorRightConnector" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.1"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ttb5cTqvEemerJ9lFKFKlA"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_U70_MDqvEemerJ9lFKFKlA" type="3017" fontName="Segoe UI">
+          <children xmi:type="notation:Shape" xmi:id="_U70_MjqvEemerJ9lFKFKlA" type="3018" fontName="Segoe UI">
+            <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.2/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U71mQDqvEemerJ9lFKFKlA"/>
+          </children>
+          <element xmi:type="datamapper:OperatorRightConnector" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.2"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U70_MTqvEemerJ9lFKFKlA"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_U73bcDqvEemerJ9lFKFKlA" type="3017" fontName="Segoe UI">
+          <children xmi:type="notation:Shape" xmi:id="_U73bcjqvEemerJ9lFKFKlA" type="3018" fontName="Segoe UI">
+            <element xmi:type="datamapper:OutNode" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.3/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U73bczqvEemerJ9lFKFKlA"/>
+          </children>
+          <element xmi:type="datamapper:OperatorRightConnector" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.3"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U73bcTqvEemerJ9lFKFKlA"/>
+        </children>
+        <element xmi:type="datamapper:OperatorRightContainer" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TsPmoTqvEemerJ9lFKFKlA"/>
+      </children>
+      <element xmi:type="datamapper:OperatorBasicContainer" href="mapperconfig.datamapper#//@operators.0/@basicContainer"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TsJgATqvEemerJ9lFKFKlA"/>
+    </children>
+    <element xmi:type="datamapper:Split" href="mapperconfig.datamapper#//@operators.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TsCyUTqvEemerJ9lFKFKlA" x="330" y="170"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="__8vWITquEemerJ9lFKFKlA"/>
+  <element xmi:type="datamapper:DataMapperRoot" href="mapperconfig.datamapper#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_ZF06cDqvEemerJ9lFKFKlA" type="4001" source="_TtXoADqvEemerJ9lFKFKlA" target="_PajvADqvEemerJ9lFKFKlA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_ZF06cTqvEemerJ9lFKFKlA" fontName="Segoe UI"/>
+    <element xmi:type="datamapper:DataMapperLink" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ZF06cjqvEemerJ9lFKFKlA" points="[-1, 0, -82, -129]$[80, 129, -1, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZF7oIDqvEemerJ9lFKFKlA" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZF7oITqvEemerJ9lFKFKlA" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_ap1q4DqvEemerJ9lFKFKlA" type="4001" source="_TtdHkDqvEemerJ9lFKFKlA" target="_PaxKYDqvEemerJ9lFKFKlA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_ap1q4TqvEemerJ9lFKFKlA" fontName="Segoe UI"/>
+    <element xmi:type="datamapper:DataMapperLink" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.1/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ap1q4jqvEemerJ9lFKFKlA" points="[-1, 0, -103, -48]$[101, 48, -1, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ap3gEDqvEemerJ9lFKFKlA" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ap4HIDqvEemerJ9lFKFKlA" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_bL4A8DqvEemerJ9lFKFKlA" type="4001" source="_U70_MjqvEemerJ9lFKFKlA" target="_Pa9XoDqvEemerJ9lFKFKlA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_bL4A8TqvEemerJ9lFKFKlA" fontName="Segoe UI"/>
+    <element xmi:type="datamapper:DataMapperLink" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.2/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bL4A8jqvEemerJ9lFKFKlA" points="[-1, 0, -103, -43]$[101, 43, -1, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bL52IDqvEemerJ9lFKFKlA" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bL52ITqvEemerJ9lFKFKlA" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_bkTIADqvEemerJ9lFKFKlA" type="4001" source="_U73bcjqvEemerJ9lFKFKlA" target="_PbI90DqvEemerJ9lFKFKlA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_bkTIATqvEemerJ9lFKFKlA" fontName="Segoe UI"/>
+    <element xmi:type="datamapper:DataMapperLink" href="mapperconfig.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.3/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_bkTIAjqvEemerJ9lFKFKlA" points="[-1, 0, -103, -38]$[101, 38, -1, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bkXZcDqvEemerJ9lFKFKlA" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_bkXZcTqvEemerJ9lFKFKlA" id="CENTER"/>
+  </edges>
+</notation:Diagram>

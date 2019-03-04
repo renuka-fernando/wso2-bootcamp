@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetUserLikeNameSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="$url:name" name="uri.var.like_name" scope="default" type="STRING"/>
+    <send>
+        <endpoint key="GetUserLikeNameEP"/>
+    </send>
+</sequence>

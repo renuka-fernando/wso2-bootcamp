@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetUserOutSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <filter xpath="//*[local-name()='TP_ID'] != ''">
+        <then>
+            <property expression="//*[local-name()='TP_FULL_NAME']" name="tp_full_name" scope="default" type="STRING"/>
+            <property expression="//*[local-name()='TP_USER_NAME']" name="tp_username" scope="default" type="STRING"/>
+            <property expression="//*[local-name()='TP_ACTIVE']" name="tp_active" scope="default" type="STRING"/>
+            <property expression="//*[local-name()='TP_CHANGED_TIME']" name="tp_change_time" scope="default" type="STRING"/>
+            <property expression="//*[local-name()='TP_TENANT_ID']" name="tp_tenant_id" scope="default" type="INTEGER"/>
+            <property expression="//*[local-name()='TP_ID']" name="tp_id" scope="default" type="INTEGER"/>
+            <payloadFactory media-type="json">
+                <format>
+{
+    "id" :$1,
+    "customer-first-name": "$2",
+    "customer-last-name": "$3",
+    "username": "$4",
+    "tenant-id": "$5"
+}
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:tp_id"/>
+                    <arg evaluator="xml" expression="fn:substring-before($ctx:tp_full_name, ' ')"/>
+                    <arg evaluator="xml" expression="fn:substring-after($ctx:tp_full_name, ' ')"/>
+                    <arg evaluator="xml" expression="$ctx:tp_username"/>
+                    <arg evaluator="xml" expression="$ctx:tp_tenant_id"/>
+                </args>
+            </payloadFactory>
+            <send/>
+        </then>
+        <else/>
+    </filter>
+    <payloadFactory media-type="json">
+        <format>
+{
+    "status_code": $1,
+    "message": "$2"
+}
+		</format>
+        <args>
+            <arg value="404"/>
+            <arg value="Customer not Found"/>
+        </args>
+    </payloadFactory>
+    <property name="HTTP_SC" scope="axis2" type="STRING" value="404"/>
+    <send/>
+</sequence>

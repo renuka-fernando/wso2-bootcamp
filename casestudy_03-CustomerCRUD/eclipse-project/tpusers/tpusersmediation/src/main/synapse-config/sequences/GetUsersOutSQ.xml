@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetUsersOutSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <foreach expression="//*[local-name()='User']" id="iternate_1">
+        <sequence>
+            <property expression="//*[local-name()='TP_FULL_NAME']" name="tp_full_name" scope="default" type="STRING"/>
+            <property expression="//*[local-name()='TP_USER_NAME']" name="tp_username" scope="default" type="STRING"/>
+            <property expression="//*[local-name()='TP_ACTIVE']" name="tp_active" scope="default" type="STRING"/>
+            <property expression="//*[local-name()='TP_CHANGED_TIME']" name="tp_change_time" scope="default" type="STRING"/>
+            <property expression="//*[local-name()='TP_TENANT_ID']" name="tp_tenant_id" scope="default" type="INTEGER"/>
+            <property expression="//*[local-name()='TP_ID']" name="tp_id" scope="default" type="INTEGER"/>
+            <payloadFactory media-type="xml">
+                <format>
+                    <customer>
+                        <id>$1</id>
+                        <customer-first-name>$2</customer-first-name>
+                        <customer-last-name>$3</customer-last-name>
+                        <username>$4</username>
+                        <tenant-id>$5</tenant-id>
+                    </customer>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:tp_id"/>
+                    <arg evaluator="xml" expression="fn:substring-before($ctx:tp_full_name, ' ')"/>
+                    <arg evaluator="xml" expression="fn:substring-after($ctx:tp_full_name, ' ')"/>
+                    <arg evaluator="xml" expression="$ctx:tp_username"/>
+                    <arg evaluator="xml" expression="$ctx:tp_tenant_id"/>
+                </args>
+            </payloadFactory>
+        </sequence>
+    </foreach>
+    <log level="full">
+        <property name="CUSTOMERS" value="==========================="/>
+    </log>
+    <send/>
+</sequence>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="ReadDeletedTpUsersProxy" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <property name="transport.jms.Destination" scope="default" type="STRING" value="DeletedTpUsers"/>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+    <parameter name="transport.jms.DestinationType">queue</parameter>
+    <parameter name="transport.jms.Destination">DeletedTpUsers</parameter>
+    <parameter name="transport.jms.ContentType">
+        <rules>
+            <jmsProperty>contentType</jmsProperty>
+            <default>text/json</default>
+        </rules>
+    </parameter>
+    <parameter name="java.naming.factory.initial">org.wso2.andes.jndi.PropertiesFileInitialContextFactory</parameter>
+    <parameter name="java.naming.provider.url">repository/conf/jndi.properties</parameter>
+    <parameter name="transport.jms.ConnectionFactoryJNDIName">QueueConnectionFactory</parameter>
+</proxy>

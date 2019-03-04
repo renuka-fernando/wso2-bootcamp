@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PutUserOutSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="$axis2:HTTP_SC" name="http_status" scope="default" type="STRING"/>
+    <property expression="//*[local-name()='ID']" name="tp_user_id" scope="default" type="STRING"/>
+    <filter xpath="$ctx:http_status = 200">
+        <then>
+            <payloadFactory media-type="json">
+                <format>
+{
+    "status_code": $1,
+    "message": "$2"
+}
+				</format>
+                <args>
+                    <arg value="200"/>
+                    <arg value="Customer Updated"/>
+                </args>
+            </payloadFactory>
+            <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+        </then>
+        <else>
+            <payloadFactory media-type="json">
+                <format>
+{
+    "status_code": $1,
+    "message": "$2"
+}
+				</format>
+                <args>
+                    <arg value="400"/>
+                    <arg value="Customer ID or Tenant ID error"/>
+                </args>
+            </payloadFactory>
+            <property name="HTTP_SC" scope="axis2" type="STRING" value="400"/>
+        </else>
+    </filter>
+    <send/>
+</sequence>

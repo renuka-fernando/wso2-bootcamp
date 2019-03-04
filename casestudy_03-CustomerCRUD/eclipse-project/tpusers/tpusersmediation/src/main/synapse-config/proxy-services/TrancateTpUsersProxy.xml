@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="TrancateTpUsersProxy" startOnLoad="true" transports="https http" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <property action="remove" name="Content-Type" scope="transport"/>
+            <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+            <call>
+                <endpoint key="TrancateUsersEP"/>
+            </call>
+            <drop/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+</proxy>

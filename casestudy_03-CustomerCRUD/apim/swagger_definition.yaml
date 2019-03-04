@@ -1,0 +1,117 @@
+swagger: "2.0"
+paths:
+  "/users/{TP_ID}":
+    get:
+      produces:
+        - application/json
+      parameters:
+        - name: TP_ID
+          in: path
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: "#/definitions/Customer"
+        "404":
+          description: user not found
+          schema:
+            $ref: "#/definitions/CustomerNotFound"
+      x-auth-type: "Application & Application User"
+      x-throttling-tier: Unlimited
+    put:
+      consumes:
+        - application/xml
+      produces:
+        - application/xml
+      parameters:
+        - name: TP_ID
+          in: path
+          required: true
+          type: integer
+        - name: Payload
+          description: Request Body
+          required: true
+          in: body
+          schema:
+            $ref: "#/definitions/Customers"
+      responses:
+        "200":
+          description: ""
+      x-auth-type: "Application & Application User"
+      x-throttling-tier: Unlimited
+    delete:
+      parameters:
+        - name: TP_ID
+          in: path
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: ""
+      x-auth-type: "Application & Application User"
+      x-throttling-tier: Unlimited
+  /users:
+    post:
+      consumes:
+        - application/xml
+      produces:
+        - application/xml
+      parameters:
+        - name: Payload
+          description: Request Body
+          required: true
+          in: body
+          schema:
+            $ref: "#/definitions/Customers"
+      responses:
+        "200":
+          description: ""
+      x-auth-type: "Application & Application User"
+      x-throttling-tier: Unlimited
+    get:
+      produces:
+        - application/xml
+      responses:
+        "200":
+          description: ""
+      parameters:
+        - name: name
+          in: query
+          required: true
+          type: string
+      x-auth-type: "Application & Application User"
+      x-throttling-tier: Unlimited
+info:
+  title: TP-User
+  version: v1.0.0
+definitions:
+  Customer:
+    type: object
+    properties:
+      customer-first-name:
+        type: string
+        example: Renuka
+      customer-last-name:
+        type: string
+        example: fernando
+      username:
+        type: string
+        example: rfernando
+      tenant-id:
+        type: integer
+  Customers:
+    type: object
+    properties:
+      Customer:
+        $ref: "#/definitions/Customer"
+  CustomerNotFound:
+    type: object
+    properties:
+      status_code:
+        type: integer
+        example: 404
+      message:
+        type: string
+        example: Customer not Found

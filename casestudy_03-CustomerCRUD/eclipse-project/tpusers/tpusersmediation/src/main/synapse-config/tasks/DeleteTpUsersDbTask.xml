@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<task class="org.apache.synapse.startup.tasks.MessageInjector" group="synapse.simple.quartz" name="DeleteTpUsersDbTask" xmlns="http://ws.apache.org/ns/synapse">
+    <trigger interval="600"/>
+    <property name="message" xmlns:task="http://www.wso2.org/products/wso2commons/tasks">
+        <body/>
+    </property>
+    <property name="injectTo" value="proxy" xmlns:task="http://www.wso2.org/products/wso2commons/tasks"/>
+    <property name="proxyName" value="TrancateTpUsersProxy" xmlns:task="http://www.wso2.org/products/wso2commons/tasks"/>
+</task>

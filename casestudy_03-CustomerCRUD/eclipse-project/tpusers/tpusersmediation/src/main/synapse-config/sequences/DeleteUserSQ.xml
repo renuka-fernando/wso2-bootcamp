@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="DeleteUserSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="$ctx:uri.var.TP_ID" name="tp_id" scope="default" type="STRING"/>
+    <property action="remove" name="Content-Type" scope="transport"/>
+    <call>
+        <endpoint key="GetUserEP"/>
+    </call>
+    <log level="full">
+        <property name="#Get User before Delete#" value="================================="/>
+    </log>
+    <payloadFactory media-type="xml">
+        <format>
+            <user>
+                <user_id>$1</user_id>
+                <user_name>$2</user_name>
+                <full_name>$3</full_name>
+            </user>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:tp_id"/>
+            <arg evaluator="xml" expression="//*[local-name()='TP_USER_NAME']"/>
+            <arg evaluator="xml" expression="//*[local-name()='TP_FULL_NAME']"/>
+        </args>
+    </payloadFactory>
+    <log level="full">
+        <property name="#User to be put into MB#" value="==================================="/>
+    </log>
+    <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+    <call>
+        <endpoint key="DeletedUsersQueueEP"/>
+    </call>
+    <property name="OUT_ONLY" scope="default" type="STRING" value="false"/>
+    <property action="remove" name="Content-Type" scope="transport"/>
+    <send>
+        <endpoint key="DeleteUserEP"/>
+    </send>
+</sequence>

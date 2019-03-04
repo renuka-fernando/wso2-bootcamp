@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetUserSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="$ctx:uri.var.TP_ID" name="tp_id" scope="default" type="STRING"/>
+    <send>
+        <endpoint key="GetUserEP"/>
+    </send>
+</sequence>

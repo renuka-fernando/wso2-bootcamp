@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/users" name="UsersAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/{TP_ID}">
+        <inSequence>
+            <sequence key="GetUserSQ"/>
+        </inSequence>
+        <outSequence>
+            <sequence key="GetUserOutSQ"/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="?name={like_name}">
+        <inSequence>
+            <sequence key="GetUserLikeNameSQ"/>
+        </inSequence>
+        <outSequence>
+            <sequence key="GetUsersOutSQ"/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/">
+        <inSequence>
+            <sequence key="PostUserSQ"/>
+        </inSequence>
+        <outSequence>
+            <sequence key="PostUserOutSQ"/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/{TP_ID}">
+        <inSequence>
+            <sequence key="PutUserSQ"/>
+        </inSequence>
+        <outSequence>
+            <sequence key="PutUserOutSQ"/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE" uri-template="/{TP_ID}">
+        <inSequence>
+            <sequence key="DeleteUserSQ"/>
+        </inSequence>
+        <outSequence>
+            <sequence key="DeleteUserOutSQ"/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

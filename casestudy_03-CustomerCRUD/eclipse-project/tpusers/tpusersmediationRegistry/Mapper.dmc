@@ -1,0 +1,24 @@
+map_S_root_S_users = function(){ 
+var outputusers={};
+
+var count_i_inputroot = 0;
+outputusers =  {};
+outputusers.user =  [];
+
+for(i_inputroot in inputroot){
+outputusers.user[count_i_inputroot] =  {};
+outputusers.user[count_i_inputroot].first_name = inputroot[i_inputroot].John;
+outputusers.user[count_i_inputroot].last_name = inputroot[i_inputroot].Smith;
+outputusers.user[count_i_inputroot].user_name = inputroot[i_inputroot].jsmith;
+outputusers.user[count_i_inputroot].tenant_id = inputroot[i_inputroot]['1'];
+
+count_i_inputroot++;
+}
+return outputusers;
+};
+
+
+
+
+
+

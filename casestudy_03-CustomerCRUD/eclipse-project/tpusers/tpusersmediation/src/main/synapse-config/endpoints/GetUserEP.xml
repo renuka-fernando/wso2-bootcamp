@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="GetUserEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="get" uri-template="http://192.168.200.97:9763/services/TP_UserService/users/{uri.var.TP_ID}"/>
+</endpoint>

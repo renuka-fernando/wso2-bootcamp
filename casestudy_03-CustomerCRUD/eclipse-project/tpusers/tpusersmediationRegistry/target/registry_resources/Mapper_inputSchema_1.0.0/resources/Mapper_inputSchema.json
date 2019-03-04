@@ -1,0 +1,28 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "array",
+  "items" : [ {
+    "properties" : {
+      "John" : {
+        "id" : "http://wso2jsonschema.org/0/John",
+        "type" : "string"
+      },
+      "Smith" : {
+        "id" : "http://wso2jsonschema.org/0/Smith",
+        "type" : "string"
+      },
+      "jsmith" : {
+        "id" : "http://wso2jsonschema.org/0/jsmith",
+        "type" : "string"
+      },
+      "1" : {
+        "id" : "http://wso2jsonschema.org/0/1",
+        "type" : "string"
+      }
+    },
+    "id" : "http://wso2jsonschema.org/0",
+    "type" : "object"
+  } ]
+}

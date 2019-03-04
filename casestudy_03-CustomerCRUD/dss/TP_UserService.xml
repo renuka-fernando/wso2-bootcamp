@@ -1,0 +1,111 @@
+<data enableBoxcarring="true" name="TP_UserService" transports="http https local">
+   <config enableOData="false" id="TP_Users">
+      <property name="driverClassName">com.mysql.jdbc.Driver</property>
+      <property name="url">jdbc:mysql://localhost:3306/tp</property>
+      <property name="username">root</property>
+      <property name="password">root</property>
+   </config>
+   <query id="CreateUserQRY" returnGeneratedKeys="true" useConfig="TP_Users">
+      <sql>INSERT INTO tp_user(TP_FULL_NAME, TP_USER_NAME, TP_USER_PASSWORD, TP_ACTIVE, TP_CHANGED_TIME, TP_TENANT_ID)&#xd;VALUES (:TP_FULL_NAME, :TP_USER_NAME, :TP_USER_PASSWORD, :TP_ACTIVE, :TP_CHANGED_TIME, :TP_TENANT_ID)</sql>
+      <result element="GeneratedKeys" rowName="Entry" useColumnNumbers="true">
+         <element column="1" name="ID" xsdType="integer"/>
+      </result>
+      <param name="TP_FULL_NAME" sqlType="STRING"/>
+      <param name="TP_USER_NAME" sqlType="STRING"/>
+      <param name="TP_USER_PASSWORD" sqlType="STRING"/>
+      <param name="TP_ACTIVE" sqlType="TINYINT"/>
+      <param name="TP_CHANGED_TIME" sqlType="STRING"/>
+      <param name="TP_TENANT_ID" sqlType="INTEGER"/>
+   </query>
+   <query id="UpdateUserQRY" returnUpdatedRowCount="true" useConfig="TP_Users">
+      <sql>UPDATE tp_user&#xd;SET TP_FULL_NAME=:TP_FULL_NAME, TP_USER_NAME=:TP_USER_NAME, TP_ACTIVE=:TP_ACTIVE, TP_CHANGED_TIME=:TP_CHANGED_TIME, TP_TENANT_ID=:TP_TENANT_ID&#xd;WHERE TP_ID=:TP_ID</sql>
+      <result element="UpdatedRowCount" rowName="" useColumnNumbers="true">
+         <element column="1" name="Value" xsdType="integer"/>
+      </result>
+      <param name="TP_FULL_NAME" sqlType="STRING"/>
+      <param name="TP_USER_NAME" sqlType="STRING"/>
+      <param name="TP_ACTIVE" sqlType="TINYINT"/>
+      <param name="TP_CHANGED_TIME" sqlType="STRING"/>
+      <param name="TP_TENANT_ID" sqlType="INTEGER"/>
+      <param name="TP_ID" sqlType="INTEGER"/>
+   </query>
+   <query id="GetUserQRY" useConfig="TP_Users">
+      <sql>SELECT TP_ID, TP_FULL_NAME, TP_USER_NAME, TP_USER_PASSWORD, TP_ACTIVE, TP_CHANGED_TIME, TP_TENANT_ID&#xd;FROM tp_user&#xd;WHERE TP_ID=:TP_ID</sql>
+      <result element="Users" rowName="User">
+         <element column="TP_FULL_NAME" name="TP_FULL_NAME" xsdType="string"/>
+         <element column="TP_USER_NAME" name="TP_USER_NAME" xsdType="string"/>
+         <element column="TP_USER_PASSWORD" name="TP_USER_PASSWORD" xsdType="string"/>
+         <element column="TP_ACTIVE" name="TP_ACTIVE" xsdType="string"/>
+         <element column="TP_CHANGED_TIME" name="TP_CHANGED_TIME" xsdType="string"/>
+         <element column="TP_TENANT_ID" name="TP_TENANT_ID" xsdType="string"/>
+         <element column="TP_ID" name="TP_ID" xsdType="string"/>
+      </result>
+      <param name="TP_ID" sqlType="INTEGER"/>
+   </query>
+   <query id="DeleteUserQRY" returnUpdatedRowCount="true" useConfig="TP_Users">
+      <sql>DELETE FROM tp_user&#xd;WHERE TP_ID=:TP_ID</sql>
+      <result element="UpdatedRowCount" rowName="" useColumnNumbers="true">
+         <element column="1" name="Value" xsdType="integer"/>
+      </result>
+      <param name="TP_ID" sqlType="INTEGER"/>
+   </query>
+   <query id="TrancateUsersQRY" useConfig="TP_Users">
+      <sql>TRUNCATE TABLE tp_user</sql>
+   </query>
+   <query id="GetUserLikeNameQRY" useConfig="TP_Users">
+      <sql>SELECT TP_ID, TP_FULL_NAME, TP_USER_NAME, TP_USER_PASSWORD, TP_ACTIVE, TP_CHANGED_TIME, TP_TENANT_ID&#xd;FROM tp_user&#xd;WHERE TP_FULL_NAME like concat('%', :name, '%')</sql>
+      <result element="Users" rowName="User">
+         <element column="TP_ID" name="TP_ID" xsdType="integer"/>
+         <element column="TP_FULL_NAME" name="TP_FULL_NAME" xsdType="string"/>
+         <element column="TP_USER_NAME" name="TP_USER_NAME" xsdType="string"/>
+         <element column="TP_USER_PASSWORD" name="TP_USER_PASSWORD" xsdType="string"/>
+         <element column="TP_ACTIVE" name="TP_ACTIVE" xsdType="string"/>
+         <element column="TP_CHANGED_TIME" name="TP_CHANGED_TIME" xsdType="string"/>
+         <element column="TP_TENANT_ID" name="TP_TENANT_ID" xsdType="string"/>
+      </result>
+      <param name="name" sqlType="STRING"/>
+   </query>
+   <operation name="trancateUsersOP">
+      <call-query href="TrancateUsersQRY"/>
+   </operation>
+   <resource method="POST" path="users" returnRequestStatus="true">
+      <description>add a user&#xd;                                    &#xd;                                    &#xd;                                    &#xd;                                    &#xd;                                    </description>
+      <call-query href="CreateUserQRY">
+         <with-param name="TP_FULL_NAME" query-param="TP_FULL_NAME"/>
+         <with-param name="TP_USER_NAME" query-param="TP_USER_NAME"/>
+         <with-param name="TP_USER_PASSWORD" query-param="TP_USER_PASSWORD"/>
+         <with-param name="TP_ACTIVE" query-param="TP_ACTIVE"/>
+         <with-param name="TP_CHANGED_TIME" query-param="TP_CHANGED_TIME"/>
+         <with-param name="TP_TENANT_ID" query-param="TP_TENANT_ID"/>
+      </call-query>
+   </resource>
+   <resource method="PUT" path="users">
+      <description>update user&#xd;                                    &#xd;                                    &#xd;                                    &#xd;                                    </description>
+      <call-query href="UpdateUserQRY">
+         <with-param name="TP_FULL_NAME" query-param="TP_FULL_NAME"/>
+         <with-param name="TP_USER_NAME" query-param="TP_USER_NAME"/>
+         <with-param name="TP_ACTIVE" query-param="TP_ACTIVE"/>
+         <with-param name="TP_CHANGED_TIME" query-param="TP_CHANGED_TIME"/>
+         <with-param name="TP_TENANT_ID" query-param="TP_TENANT_ID"/>
+         <with-param name="TP_ID" query-param="TP_ID"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="users/{TP_ID}">
+      <call-query href="GetUserQRY">
+         <with-param name="TP_ID" query-param="TP_ID"/>
+      </call-query>
+   </resource>
+   <resource method="DELETE" path="users/{TP_ID}">
+      <call-query href="DeleteUserQRY">
+         <with-param name="TP_ID" query-param="TP_ID"/>
+      </call-query>
+   </resource>
+   <resource method="DELETE" path="trancate/users">
+      <call-query href="TrancateUsersQRY"/>
+   </resource>
+   <resource method="GET" path="users/name/{name}">
+      <call-query href="GetUserLikeNameQRY">
+         <with-param name="name" query-param="name"/>
+      </call-query>
+   </resource>
+</data>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PutUserSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="get-property('SYSTEM_DATE', 'yyyy-MM-dd HH:mm:ss')" name="current_date_time" scope="default" type="STRING"/>
+    <property name="tp_active" scope="default" type="INTEGER" value="1"/>
+    <!-- Request from the API -->
+    <property expression="$ctx:uri.var.TP_ID" name="tp_id" scope="default" type="STRING"/>
+    <property expression="//*[local-name()='customer-first-name']" name="tp_first_name" scope="default" type="STRING"/>
+    <property expression="//*[local-name()='customer-last-name']" name="tp_last_name" scope="default" type="STRING"/>
+    <property expression="//*[local-name()='username']" name="tp_user_name" scope="default" type="STRING"/>
+    <property expression="//*[local-name()='tenant-id']" name="tp_tenant_id" scope="default" type="INTEGER"/>
+    <payloadFactory media-type="xml">
+        <format>
+            <user>
+                <TP_ID>$1</TP_ID>
+                <TP_FULL_NAME>$2</TP_FULL_NAME>
+                <TP_USER_NAME>$3</TP_USER_NAME>
+                <TP_ACTIVE>$4</TP_ACTIVE>
+                <TP_CHANGED_TIME>$5</TP_CHANGED_TIME>
+                <TP_TENANT_ID>$6</TP_TENANT_ID>
+            </user>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:tp_id"/>
+            <arg evaluator="xml" expression="fn:concat($ctx:tp_first_name, ' ', $ctx:tp_last_name)"/>
+            <arg evaluator="xml" expression="$ctx:tp_user_name"/>
+            <arg evaluator="xml" expression="$ctx:tp_active"/>
+            <arg evaluator="xml" expression="$ctx:current_date_time"/>
+            <arg evaluator="xml" expression="$ctx:tp_tenant_id"/>
+        </args>
+    </payloadFactory>
+    <log level="full"/>
+    <send>
+        <endpoint key="PutUserEP"/>
+    </send>
+</sequence>

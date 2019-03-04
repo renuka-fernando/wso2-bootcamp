@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="CreateUsersFromFileProxy" startOnLoad="true" transports="vfs" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <smooks config-key="smooks-key">
+                <input type="text"/>
+                <output type="xml"/>
+            </smooks>
+            <log level="full">
+                <property name="SMOOKS" value="********************"/>
+            </log>
+            <!-- Iteration is done to save correctly correct users; others are ignored -->
+            <!-- If want to discard the whole file, remove this iterate, foreach in PostUserSQ will do this -->
+            <iterate expression="//*[local-name()='customer']" id="iternate_1">
+                <target>
+                    <sequence>
+                        <log level="full">
+                            <property name="==================" value="++++++++++++++++++++++"/>
+                        </log>
+                        <sequence key="PostUserSQ"/>
+                    </sequence>
+                </target>
+            </iterate>
+            <drop/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <parameter name="transport.PollInterval">2000ms</parameter>
+    <parameter name="transport.vfs.FileURI">file://D:\tp_users\in</parameter>
+    <parameter name="transport.vfs.ContentType">text/plain</parameter>
+    <parameter name="transport.vfs.ActionAfterProcess">MOVE</parameter>
+    <parameter name="transport.vfs.MoveAfterFailure">file://D:\tp_users\failed</parameter>
+    <parameter name="transport.vfs.ActionAfterFailure">MOVE</parameter>
+    <parameter name="transport.vfs.FileNamePattern">.*.csv</parameter>
+    <parameter name="transport.vfs.MoveAfterProcess">file://D:\tp_users\completed</parameter>
+</proxy>

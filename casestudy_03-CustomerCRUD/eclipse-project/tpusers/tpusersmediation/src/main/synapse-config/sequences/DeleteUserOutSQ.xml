@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="DeleteUserOutSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <filter xpath="//*[local-name()='Value']=0">
+        <then>
+            <property name="deleted" scope="default" type="STRING" value="false"/>
+        </then>
+        <else>
+            <property name="deleted" scope="default" type="STRING" value="true"/>
+        </else>
+    </filter>
+    <payloadFactory media-type="xml">
+        <format>
+            <delete_success>$1</delete_success>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$ctx:deleted"/>
+        </args>
+    </payloadFactory>
+    <send/>
+</sequence>
